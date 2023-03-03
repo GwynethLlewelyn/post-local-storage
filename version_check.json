@@ -1,0 +1,11 @@
+{
+	"stable": {
+		"1.0": {
+			"current": "1.0.0",
+			"download": "https://www.phpbb.com/customise/db/download/148016",
+			"announcement": "https://www.phpbb.com/customise/db/official_tool/ext_skeleton/",
+			"eol": null,
+			"security": false
+		}
+	}
+}
