@@ -1,8 +1,10 @@
 (function (message, doc) {
 	// If there is no localStorage support, give up
 	if (!message.localStorage) return;
-	// phpBB3 uses a textarea with id and class 'message'
-	var textarea = doc.querySelector("textarea.message");
+	// phpBB3 uses a textarea with id and name 'message'
+	var textarea = doc.querySelector("textarea#message");
+	// no point in being around if this is nil; also: avoids crashing below (gwyneth 20220303)
+	if (!textarea) return;
 	// The key for the key/value pair in localStorage is the current URL.
 	var key = message.location.href;
 	var item = null;
