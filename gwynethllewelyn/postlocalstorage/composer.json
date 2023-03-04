@@ -27,7 +27,7 @@
 		"phing/phing": "2.4.*"
 	},
 	"extra": {
-		"display-name": "Locally store the content of a post",
+		"display-name": "Post Local Storage",
 		"soft-require": {
 			"phpbb/phpbb": ">=3.3"
 		}
