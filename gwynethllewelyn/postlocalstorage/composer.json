@@ -2,7 +2,7 @@
 	"name": "gwynethllewelyn/postlocalstorage",
 	"type": "phpbb-extension",
 	"description": "A very simple phpBB3 extension to locally store the content of a post being written, to avoid losing everything after a crash or session expiration.",
-	"homepage": "https://gwynethllewelyn.net",
+	"homepage": "https://github.com/GwynethLlewelyn/post-local-storage",
 	"version": "1.0.1",
 	"license": "MIT",
 	"keywords": [
