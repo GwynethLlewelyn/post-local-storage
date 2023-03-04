@@ -22,7 +22,7 @@ If you're reading this on GitHub, then all you need is to either download the la
 
 Alternatively, you can always grab the latest version with `git clone https://github.com/GwynethLlewelyn/post-local-storage`. The plugin itself is inside `gwynethllewelyn/postlocalstorage`. These are the files to upload to your phpBB installation (you'll probably need to create all directories first, e.g. under `ext`, create `gwynethllewelyn/postlocalstorage`).
 
-Then go to the **ACP** > **Extensions**, on the sidebar: **Extension Management** | **Manage extensions** and activate **Locally store the content of a post**.
+Then go to the **ACP** > **Extensions**, on the sidebar: **Extension Management** | **Manage extensions** and activate **Post Local Storage**.
 
 There is no further configuration required.
 
