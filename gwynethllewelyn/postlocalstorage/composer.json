@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "A very simple phpBB3 extension to locally store the content of a post being written, to avoid losing everything after a crash or session expiration.",
 	"homepage": "https://gwynethllewelyn.net",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"keywords": [
 		"phpbb",
