@@ -39,3 +39,5 @@ package-lock.json
 .eslintrc.yml
 .prettierrc.json
 
+# Our stuff
+postlocalstorage.zip
