@@ -6,7 +6,7 @@ Currently being supported with security updates:
 
 | Version | Supported          | Comments                                            |
 | ------- | ------------------ |-----------------------------------------------------|
-| 1.0.2   | :white_check_mark: | Early Pre-Alpha Release (bugs _are_ to be expected!)|
+| 1.0.3   | :white_check_mark: | Early Pre-Alpha Release (bugs _are_ to be expected!)|
 
 ## Reporting a Vulnerability
 

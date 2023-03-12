@@ -1,4 +1,4 @@
-![Logo](post-local-storage-logo-smaller.png)
+![Logo](graphics/post-local-storage-logo-smaller.png)
 # post-local-storage
 ## Locally store the content of a post in the phpBB forum software 
 
