@@ -14,4 +14,4 @@ Please send them to me [by email](mailto:gwyneth.llewelyn@gwynethllewelyn.net), 
 
 Information about the vulnerability is _not_ to be released to a general audience; 
 at least not until it was properly patched _and_ a new release was publicly published,
-in which case it will be announced on (at least) the ChangeLog.
+in which case it will be announced on (at least) the [ChangeLog](CHANGELOG.md).
