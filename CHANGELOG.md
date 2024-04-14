@@ -2,6 +2,10 @@
 
 For a _much_ more detailed version, see the [commit history] on GitHub.
 
+## 1.0.4
+
+- Fix the weirdest bug found on Firefox. Kudos to @gvp9000 for the fix!
+
 ## 1.0.3
 
 -   Add functioning version check

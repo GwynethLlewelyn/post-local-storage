@@ -1,4 +1,4 @@
-// Copyright (C) 2023 Gwyneth Llewelyn
+// Copyright (C) 2023,2024 Gwyneth Llewelyn
 //
 // This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2.
 //
@@ -15,7 +15,14 @@
 	if (!textarea) return;
 	// The key for the key/value pair in localStorage is the current URL.
 	var key = message.location.href;
-	var item = null;
+	// Firefox seems to have an odd bug which affects clicking backspace in quick succession.
+	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
+	// @see
+	var count_hash_num = key.split("#").length - 1;
+	for (let i = 0; i < count_hash_num - 1; i++) {
+		key = key.substring(0, key.lastIndexOf('#'));
+	}
+	var item = null;	var item = null;
 	// Use the 'pagehide' event in modern browsers or 'beforeunload' in older browsers.
 	var unloadEvent;
 	if ("onpagehide" in message) {
