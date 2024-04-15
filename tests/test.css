@@ -1,0 +1,12 @@
+body {
+  background-color: ivory;
+  font-family: "Work Sans", ui-sans-serif, sans-serif;
+}
+
+h1 {
+  font-size: 1.2rem;
+  color: navy;
+}
+p {
+  color: darkslategray;
+}
