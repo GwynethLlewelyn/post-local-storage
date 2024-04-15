@@ -1,6 +1,10 @@
 # Changelog
 
-For a _much_ more detailed version, see the [commit history] on GitHub.
+For a _much_ more detailed version, see the [commit history](https://github.com/GwynethLlewelyn/post-local-storage/commits/master/) on GitHub.
+
+## 1.0.5
+- Renamed `custom_functions.js` to `postlocalstorage_functions.js` as per validation suggestion
+- Fix bad JSON indentation on `version_check.json` which prevented version checking from working at all
 
 ## 1.0.4
 

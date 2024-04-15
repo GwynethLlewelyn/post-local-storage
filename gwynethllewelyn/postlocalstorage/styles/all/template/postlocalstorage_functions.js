@@ -6,7 +6,7 @@
 //
 // You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-(function (message, doc) {
+(function(message, doc) {
 	// If there is no localStorage support, give up
 	if (!message.localStorage) return;
 	// phpBB3 uses a textarea with id and name 'message'
@@ -17,12 +17,13 @@
 	var key = message.location.href;
 	// Firefox seems to have an odd bug which affects clicking backspace in quick succession.
 	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
-	// @see
+	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877324#p877324
 	var count_hash_num = key.split("#").length - 1;
 	for (let i = 0; i < count_hash_num - 1; i++) {
 		key = key.substring(0, key.lastIndexOf('#'));
 	}
-	var item = null;	var item = null;
+	var item = null;
+	var item = null;
 	// Use the 'pagehide' event in modern browsers or 'beforeunload' in older browsers.
 	var unloadEvent;
 	if ("onpagehide" in message) {
@@ -50,14 +51,13 @@
 	// When the user presses a key just *once* inside the textarea, run the storage function when the page is unloaded.
 	textarea.addEventListener(
 		"keyup",
-		function () {
+		function() {
 			message.addEventListener(unloadEvent, updateStorage);
 			message.setInterval(updateStorage, 10000);
-		},
-		{ once: true }
+		}, { once: true }
 	);
 	// When the form is submitted, delete the localStorage key/value pair.
-	textarea.form.addEventListener("submit", function () {
+	textarea.form.addEventListener("submit", function() {
 		message.localStorage.removeItem(key);
 		message.removeEventListener(unloadEvent, updateStorage);
 	});
