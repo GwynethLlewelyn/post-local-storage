@@ -26,12 +26,18 @@ Then go to the **ACP** > **Extensions**, on the sidebar: **Extension Management*
 
 There is no further configuration required.
 
+## Upgrading
+
+There was a bug on the pre-
+
 ## Acknowledgements
 
 Many thanks to
 [@Tread](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1973496) and [@cabot](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1337922) for gently 'persuading' me to publish this code as a phpBB3.3 extension, by pointing me to all the appropriate bits and pieces of code to be 'assembled' into an extension. Yay!
 
 Kudos to [@gvp9000](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2227069) for finding & fixing an obscure bug that affects Firefox.
+
+Kudos to [@kylesands](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2218926) for pointing out and providing a fix for [incorrect local storage deletion during Preview](https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246115?p=877342#p877342).
 
 Logo designed by [DALL·E 2](https://openai.com/product/dall-e-2).
 
