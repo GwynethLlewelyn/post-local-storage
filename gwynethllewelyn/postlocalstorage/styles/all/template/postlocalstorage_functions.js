@@ -7,6 +7,8 @@
 // You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 (function(message, doc) {
+	var nIntervId;
+
 	// One year = 31536000000 milliseconds.
 	const FRESHNESS_INTERVAL = 365 * 24 * 60 * 60 * 1000;
 
@@ -42,7 +44,7 @@
 	if (item) {
 		var data = JSON.parse(item);
 		// Before 1.1.0, 'our' objects did not carry timestamps, so we need to check for them: (gwyneth 20240415)
-		if (Object.hasOwn(data, "timestamp") && data.timestamp) {
+		if (isIn("timestamp", data) && data.timestamp) {
 			// check if data is stale.
 			if (Date.now() - data.timestamp > FRESHNESS_INTERVAL) {
 				// Remove stale data. A new item will be added as soon as the user clicks a key.
@@ -63,6 +65,15 @@
 			message.localStorage.setItem(key, item);
 		}
 	}
+
+	// Workaround for non-existing Object.hasOwn()
+	function isIn(field, obj) {
+		if ("hasOwn" in Object) {
+			return Object.hasOwn(field, obj);
+		}
+		return (field in obj);
+	}
+
 	// This function will store the current value of the textarea in localStorage (or delete it if the textarea is blank) with a timestamp.
 	function updateStorage() {
 		// Note: if the visibilitychange event is being used, one should check to see if the visibilityState
@@ -73,8 +84,10 @@
 		if (textarea.value) {
 			item = JSON.stringify({ "content": textarea.value, "timestamp": Date.now() });
 			message.localStorage.setItem(key, item);
+			console.debug("Existing text saved to localStorage");
 		} else {
 			message.localStorage.removeItem(key);
+			console.debug("Empty textarea -- remove existing text in localStorage");
 		}
 		// This event listener is no longer needed now so remove it.
 		// Once the user presses another key, it will be added again!
@@ -85,7 +98,7 @@
 		"keyup",
 		function() {
 			message.addEventListener(unloadEvent, updateStorage);
-			message.setInterval(updateStorage, 10000);
+			nIntervId = message.setInterval(updateStorage, 10000);
 		}, { once: true }
 	);
 	// When the form is submitted, delete the localStorage key/value pair.
@@ -95,6 +108,8 @@
 		if (document.activeElement.value != 'Preview') {
 			message.localStorage.removeItem(key);
 			message.removeEventListener(unloadEvent, updateStorage);
+			message.clearInterval(nIntervId);
+			console.debug("Text submitted (not in preview!); removed from localStorage");
 		}
 	});
 })(this, this.document);
