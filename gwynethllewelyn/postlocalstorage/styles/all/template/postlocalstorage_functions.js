@@ -110,6 +110,15 @@
 			nIntervId = message.setInterval(updateStorage, 10000);
 		}, { once: true }
 	);
+	// Same for the subject, I think:
+	subject.addEventListener(
+		"keyup",
+		function() {
+			message.addEventListener(unloadEvent, updateStorage);
+			nIntervId = message.setInterval(updateStorage, 10000);
+		}, { once: true }
+	);
+
 	// When the form is submitted, delete the localStorage key/value pair.
 	textarea.form.addEventListener("submit", function() {
 		// ... except on Preview. We still want to keep the storage around during preview!
