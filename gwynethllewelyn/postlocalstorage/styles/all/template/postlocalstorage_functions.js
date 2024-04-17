@@ -15,13 +15,6 @@
  */
 (function(message, doc) {
 	/**
-	 * Handler for the SetInterval event, so we can remove it on submit.
-	 * @type {number}
-	 * @since 1.1.0
-	 */
-	var nIntervId;
-
-	/**
 	 * Freshness interval in milliseconds.
 	 * One year = 31536000000 milliseconds.
 	 * @const {number}
@@ -130,7 +123,7 @@
 	 *
 	 * It gets triggered by the "type" events on the input and textarea elements,
 	 * @function updateStorage
-	 * @type EventListener
+	 * @type {EventListener}
 	 */
 	function updateStorage() {
 		// Note: if the visibilitychange event is being used, one should check to see if the visibilityState
@@ -146,40 +139,46 @@
 			message.localStorage.removeItem(key);
 			console.debug("Empty textarea -- remove existing content & subject in localStorage");
 		}
-		// This event listener is no longer needed now so remove it.
-		// Once the user presses another key, it will be added again!
-		message.removeEventListener(unloadEvent, updateStorage);
 	}
 	// When the user presses a key just *once* inside the textarea, run the storage function when the page is unloaded.
+	// Note that because this happens just once, the listener is removed afterwards and we don't need to track it.
 	textarea.addEventListener(
 		"keyup",
-		/** @listens keyup */
+		/**
+		 * @listens keyup
+		 * @type {EventListener}
+		 */
 		function() {
 			message.addEventListener(unloadEvent, updateStorage);
-			nIntervId = message.setInterval(updateStorage, 10000);
+			message.setInterval(updateStorage, 10000);
 		}, { once: true }
 	);
 	// Same for the subject, I think:
 	subject.addEventListener(
 		"keyup",
-		/** @listens keyup */
+		/**
+		 * @listens keyup
+		 * @type {EventListener}
+		 */
 		function() {
 			message.addEventListener(unloadEvent, updateStorage);
-			nIntervId = message.setInterval(updateStorage, 10000);
+			message.setInterval(updateStorage, 10000);
 		}, { once: true }
 	);
 
 	// When the form is submitted, delete the localStorage key/value pair.
 	textarea.form.addEventListener(
 		"submit",
-		/** @listens submit */
+		/**
+		 * @listens submit
+		 * @type {EventListener}
+		 */
 		function() {
 			// ... except on Preview. We still want to keep the storage around during preview!
-			// Kudos to
-			if (document.activeElement.value != 'Preview') {
+			// Kudos to @kylesands for this
+			if (document.activeElement.tagName.toLowerCase() == "input" && document.activeElement.value.toLowerCase() == 'submit') { // Added to only clear on Input button with Submit value
 				message.localStorage.removeItem(key);
 				message.removeEventListener(unloadEvent, updateStorage);
-				message.clearInterval(nIntervId);
 				console.debug("Text submitted (not in preview!); removed from localStorage");
 			}
 		}
