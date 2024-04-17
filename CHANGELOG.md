@@ -10,6 +10,7 @@ For a _much_ more detailed version of this changelog, see the [commit history](h
 -   Fixed DOM transversal in order to catch text written on a Quick Reply as well (it uses a different class).
 -   Added a _very simple_ test suite (not on the plugin, just on the GitHub package) with a mock phpBB3 HTML/CSS layout, just to test the actual functionality of the local storage facility. Just point a browser to the local file `./tests/test.html` and open the Development Tools on your browser. Debug messages are also sent to the console, if you enable it to see them (regular messages are very sparsely used, while debug messages are chatty).
 -   Refactored the code to use the 'new' operators `?.` and `??`, making the overall code much easier to follow & understand (and possibly more bug-proof as well).
+-   Attempted to add JSDoc documentation on the JavaScript code (still a WIP).
 
 ## 1.0.5
 
