@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<title>Test page</title>
+	<meta charset="UTF-8">
 	<link rel="stylesheet" href="test.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Test page for localStorage">
@@ -12,10 +13,46 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<h1>Fake phpBB3 Page</h1>
-	<p>
-		Saves unsaved text to localStorage. Submit does nothing, but the script <em>should</em> clear both the storage and the textarea</p>
-	<form method="post" action="#">
+	<h1 id="theTitle">Fake phpBB3 Page</h1>
+	<article>
+		<h2 id="articleTitle">Instructions</h2>
+		<p>
+			Saves unsaved text to localStorage.
+		</p>
+		<p>
+			To test, just type something either on the subject input box, or on the textarea for the content below, and press the <code>Submit</code> button.
+		</p>
+		<p>
+			When clicking <code>Submit</code> for the first time, this will refresh the page, clear local storage, and force the page to go to tag <code>#theTitle</code> (the first heading), which will be appended to the URL. This is <em>not</em> the expected result, but it's the best one can do, taking into consideration that there is no real web server to submit anything <em>to</em>.
+		</p>
+		<p>
+			Instead, we're "pretending" that there was a server redirecting us to a new page (which just happens to be this very same one). But everything only happens on the browser.
+		</p>
+		<p>
+			However, from the second time onwards, when pressing the <code>Submit</code> button again, the URL will keep the tag appended to the end. Since the local storage is designed to use the URL as a key, it will be with <em>this</em> URL that a <em>new</em> entry will be sent to the local storage.
+		</p>
+		<p>
+			There will be now a <em>new</em> entry on local storage, while the first one (because we have pressed <code>Submit</code>) will be <em>deleted</em> from it.
+		</p>
+		<p>
+			You can now move away from the page, close the tab, reopen it, etc. In theory, the URL with the tag at the end will retain the local storage until you press <code>Submit</code> again. It should even resist a browser crash. It'll stay there technically "forever" (in practice, if you come back after a year, local storage will be deleted by then — it's hard-coded).
+		</p>
+		<h2 id="notes">Notes</h2>
+		<p>
+			Note that the saving only occurs <em>after</em> the first key press (on either field).
+		</p>
+		<p>
+			Manually clearing the textarea (where the main content is) will also remove the entry in local storage (this is similar to other environments which implement similar features), thus allowing a "fresh start", so to speak.
+		</p>
+		<p>
+			The content of both fields gets updated every ten seconds (also hard-coded), which is a reasonable trade-off, considering the typing speed of most humans, and the need to conserve resources. There is no "versioning", only the <em>last</em> state is saved (again, to prevent memory to be exhausted). After the <code>Submit</code> button gets pressed, not only the local storage is cleaned, but the timer also gets removed, thus restoring everything to the state it was before.
+		</p>
+		<p>
+			There is no limit in how many pages can be open with half-written posts all the time, although pages with exactly the same URL will retrieve the same content from the local storage. This means that you cannot prepare <em>two</em> posts on the <em>same</em> thread using the <em>same</em> browser 😄
+		</p>
+	</article>
+	<hr>
+	<form method="post" name="post-local-storage" action="#theTitle">
 		<div class="panel" id="qr_ns_editor_div">
 			<div class="inner">
 				<div class="content">

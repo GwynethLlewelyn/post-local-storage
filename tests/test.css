@@ -16,6 +16,7 @@ h1 {
 
 p {
   color: darkslategray;
+  padding-bottom: 0.5em;
 }
 
 /* CSS below comes from phpBB3 directly */
