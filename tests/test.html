@@ -12,12 +12,31 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<h1>This is my test page</h1>
+	<h1>Fake phpBB3 Page</h1>
 	<p>
-		Saves unsaved text to localStorage.</p>
-	<form method="POST" action="#">
-		<textarea id="message"></textarea>
-		<button type="submit">Submit!</button>
+		Saves unsaved text to localStorage. Submit does nothing, but the script <em>should</em> clear both the storage and the textarea</p>
+	<form method="post" action="#">
+		<div class="panel" id="qr_ns_editor_div">
+			<div class="inner">
+				<div class="content">
+					<h2>Fake Reply</h2>
+					<fieldset class="fields1">
+						<dl style="clear: left;">
+							<dt><label for="subject">Subject:</label></dt>
+							<dd><input type="text" name="subject" id="subject" size="45" maxlength="64" value="" class="inputbox autowidth" spellcheck="false" data-ms-editor="true"></dd>
+						</dl>
+						<div>
+							<textarea style="height: 9em;" name="message" class="inputbox elastic" spellcheck="false" data-ms-editor="true"></textarea>
+						</div>
+					</fieldset>
+					<fieldset class="submit-buttons">
+						<input type="hidden" name="creation_time" value="1713199088">
+						<input type="hidden" name="form_token" value="0c2672b7-6dc8-474a-a2af-12e90cc6b205">
+						<input type="submit" accesskey="s" name="submit" value="Submit" class="button1">&nbsp;
+					</fieldset>
+				</div>
+			</div>
+		</div>
 	</form>
 	<script src="../gwynethllewelyn/postlocalstorage/styles/all/template/postlocalstorage_functions.js"></script>
 </body>

@@ -1,12 +1,185 @@
+/* Some basics so that this doesn't look so default-y */
 body {
   background-color: ivory;
   font-family: "Work Sans", ui-sans-serif, sans-serif;
+  font-size: 10px;
+  line-height: normal;
+  margin: 0;
+  padding: 12px 0;
+  word-wrap: break-word;
+  -webkit-print-color-adjust: exact;
 }
 
 h1 {
   font-size: 1.2rem;
   color: navy;
 }
+
 p {
   color: darkslategray;
+}
+
+/* CSS below comes from phpBB3 directly */
+.panel {
+  margin-bottom: 4px;
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+
+.panel h3 {
+  margin: 0.5em 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+fieldset dl {
+  padding: 4px 0;
+}
+
+fieldset.fields1 dt {
+  width: 15em;
+  border-right-width: 0;
+}
+
+fieldset.fields1 div {
+    margin-bottom: 3px;
+}
+
+fieldset dt {
+  float: left;
+  width: 40%;
+  text-align: left;
+  display: block;
+}
+
+fieldset.fields1 dd {
+    margin-left: 15em;
+    border-left-width: 0;
+}
+
+fieldset dd {
+    margin-left: 41%;
+    vertical-align: top;
+    margin-bottom: 3px;
+}
+
+/* Submit button fieldset */
+fieldset.submit-buttons {
+  text-align: center;
+  vertical-align: middle;
+  margin: 5px 0;
+}
+
+fieldset.submit-buttons input {
+  vertical-align: middle;
+}
+
+dt label {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* label {
+  color: #425067;
+} */
+
+label {
+  cursor: default;
+  padding-right: 5px;
+}
+
+input.inputbox {
+    width: 85%;
+}
+
+.autowidth {
+    width: auto !important;
+}
+.inputbox {
+    border: 1px solid transparent;
+    padding: 2px;
+}
+dd input, dd textarea {
+    margin-right: 3px;
+}
+input {
+    font-weight: normal;
+    vertical-align: middle;
+    padding: 0 3px;
+    font-size: 1em;
+}
+input, button, select, optgroup, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background-color: aliceblue;
+    color: darkblue;
+}
+input {
+    line-height: normal;
+}
+
+.message-box {
+    width: 80%;
+}
+
+textarea.inputbox {
+    width: 85%;
+}
+.message-box textarea {
+    box-sizing: border-box;
+    width: 450px;
+    height: 270px;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 1.2em;
+    resize: vertical;
+    outline: 3px dashed transparent;
+    outline-offset: -4px;
+    transition: all .5s ease, height 1ms linear;
+}
+
+.inputbox {
+    border: 1px solid transparent;
+    padding: 2px;
+}
+textarea {
+    width: 60%;
+    padding: 2px;
+    font-size: 1em;
+    line-height: 1.4em;
+    overflow: auto;
+}
+
+
+.clearfix,
+fieldset dl,
+ul.topiclist dl,
+dl.polls {
+  overflow: hidden;
+}
+
+.inner:after, ul.linklist:after, .action-bar:after, .notification_text:after, .tabs-container:after, .tabs > ul:after, .minitabs > ul:after, .postprofile .avatar-container:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+pre {
+  margin: 0;
 }

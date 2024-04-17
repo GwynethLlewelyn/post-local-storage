@@ -17,12 +17,18 @@
 		console.debug("no local storage support");
 		return;
 	}
-	// phpBB3 uses a textarea with id and name 'message'
-	var textarea = doc.querySelector("textarea#message");
+	// phpBB3 uses a textarea with name 'message', both for Quick Replies _and_ normal replies
+	var textarea = doc.querySelector('textarea[name="message"]');
 	// no point in being around if this is nil; also: avoids crashing below (gwyneth 20220303)
 	if (!textarea) {
-		console.debug("no phpBB3 textarea found");
+		console.warn("no phpBB3 textarea found");
 		return;
+	}
+	// phpBB3 usually gives the subject/topic the name 'subject' — same for QR and normal replies.
+	var subject = doc.querySelector('input[name="subject"]');
+	if (!subject) {
+		console.debug("no phpBB3 subject found");
+		// I have not decided what to do in this case!
 	}
 	// The key for the key/value pair in localStorage is the current URL.
 	var key = message.location.href;
@@ -33,7 +39,7 @@
 	for (let i = 0; i < count_hash_num - 1; i++) {
 		key = key.substring(0, key.lastIndexOf('#'));
 	}
-	// JSON object to be saved with the textarea content + timestamp.
+	// JSON object to be saved with the textarea content + subject content + timestamp.
 	var item = null;
 	// Event to be used for saving content on demand, when user switches pages.
 	// Note: both the 'pagehide' or 'beforeunload' are deprecated and should not be used.
@@ -44,7 +50,7 @@
 	if (item) {
 		var data = JSON.parse(item);
 		// Before 1.1.0, 'our' objects did not carry timestamps, so we need to check for them: (gwyneth 20240415)
-		if (isIn("timestamp", data) && data.timestamp) {
+		if (data?.timestamp) {
 			// check if data is stale.
 			if (Date.now() - data.timestamp > FRESHNESS_INTERVAL) {
 				// Remove stale data. A new item will be added as soon as the user clicks a key.
@@ -54,25 +60,28 @@
 			}
 			// Data is still considered "fresh" enough, so we replace the value of the textarea with
 			// what we have on the localStorage.
-			textarea.value = data.content;
+			textarea.value = data?.content ?? "";
+			// same checking for subject.
+			subject.value = data?.subject ?? "";
 			console.debug("textarea content successfully restored");
 		} else {
 			// We don't know if the existing data is stale or not, since it comes from pre-1.1.0 times.
 			// So, upgrade object to the new format, i.e. add a timestamp to existing content.
-			let tempContent = data.content;
+			let tempContent = data?.content ?? "";
+			let tempSubject = data?.subject ?? "";
 			message.localStorage.removeItem(key);
-			item = JSON.stringify({ "content": tempContent, "timestamp": Date.now() });
+			item = JSON.stringify({ "content": tempContent, "subject": tempSubject, "timestamp": Date.now() });
 			message.localStorage.setItem(key, item);
 		}
 	}
-
-	// Workaround for non-existing Object.hasOwn()
-	function isIn(field, obj) {
-		if ("hasOwn" in Object) {
-			return Object.hasOwn(field, obj);
-		}
-		return (field in obj);
-	}
+//
+// 	// Workaround for non-existing Object.hasOwn()
+// 	function isIn(field, obj) {
+// 		if ("hasOwn" in Object) {
+// 			return Object.hasOwn(field, obj);
+// 		}
+// 		return (field in obj);
+// 	}
 
 	// This function will store the current value of the textarea in localStorage (or delete it if the textarea is blank) with a timestamp.
 	function updateStorage() {
@@ -82,7 +91,7 @@
 			console.debug("Saving existing text before moving tab to background");
 		}
 		if (textarea.value) {
-			item = JSON.stringify({ "content": textarea.value, "timestamp": Date.now() });
+			item = JSON.stringify({ "content": textarea.value, "subject": (subject?.value ?? ""), "timestamp": Date.now() });
 			message.localStorage.setItem(key, item);
 			console.debug("Existing text saved to localStorage");
 		} else {
