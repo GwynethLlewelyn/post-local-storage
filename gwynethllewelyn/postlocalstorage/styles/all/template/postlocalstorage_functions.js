@@ -7,7 +7,7 @@
 // You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 (function(message, doc) {
-	var nIntervId;
+	var nIntervId; //
 
 	// One year = 31536000000 milliseconds.
 	const FRESHNESS_INTERVAL = 365 * 24 * 60 * 60 * 1000;
@@ -21,14 +21,15 @@
 	var textarea = doc.querySelector('textarea[name="message"]');
 	// no point in being around if this is nil; also: avoids crashing below (gwyneth 20220303)
 	if (!textarea) {
-		console.warn("no phpBB3 textarea found");
+		console.warn("no phpBB3 content body textarea found");
 		return;
 	}
 	// phpBB3 usually gives the subject/topic the name 'subject' — same for QR and normal replies.
 	var subject = doc.querySelector('input[name="subject"]');
 	if (!subject) {
-		console.debug("no phpBB3 subject found");
-		// I have not decided what to do in this case!
+		console.debug("no phpBB3 subject line found");
+		// I have not decided what to do in this case! Possibly just:
+		// subject = "(no subject)";
 	}
 	// The key for the key/value pair in localStorage is the current URL.
 	var key = message.location.href;
@@ -93,10 +94,10 @@
 		if (textarea.value) {
 			item = JSON.stringify({ "content": textarea.value, "subject": (subject?.value ?? ""), "timestamp": Date.now() });
 			message.localStorage.setItem(key, item);
-			console.debug("Existing text saved to localStorage");
+			console.debug("Existing subject & content saved to localStorage");
 		} else {
 			message.localStorage.removeItem(key);
-			console.debug("Empty textarea -- remove existing text in localStorage");
+			console.debug("Empty textarea -- remove existing content & subject in localStorage");
 		}
 		// This event listener is no longer needed now so remove it.
 		// Once the user presses another key, it will be added again!
