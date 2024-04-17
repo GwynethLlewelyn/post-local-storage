@@ -14,7 +14,7 @@ Why, oh why, didn't phpBB save your data?
 
 Well, there is the 'Draft' facility, but that doesn't work as well as it should. Unless you have an extension for that, by default, forum users have to _manually_ press <kbd>Save Draft</kbd> — and it will mean that some things (such as attachments) will be lost anyway. Drafts are also stored on the phpBB database, on the backend, so if something goes wrong with your connection and/or the database connection... you'll lose your draft as well.
 
-This extension tries to replicate the most basic solution to the above issues. It uses your browser's local storage facility, which can be accessed using JavaScript. Although details differ between browsers, in general, each will persist the data across crashes. It should also be able to deal with most issues of lost typed content on posts as well as on Private Messages (PMs). However, the current version will not be able to 
+This extension tries to replicate the most basic solution to the above issues. It uses your browser's local storage facility, which can be accessed using JavaScript. Although details differ between browsers, in general, each will persist the data across crashes. It should also be able to deal with most issues of lost typed content on posts (including on Quick Reply) as well as on Private Messages (PMs), as well as eliminating stale content taking up wasted space on the browser's local storage facility (at least, up to a point). Of course, all of this is only possible for *one* browser on *one* computer (as oppoesed to "Save Draft", which should work across browsers/computers/physical locations).
 
 ## Installation
 
@@ -28,7 +28,17 @@ There is no further configuration required.
 
 ## Upgrading
 
-There was a bug on the pre-
+There was a bug on the versions prior to 1.0.5 (bad JSON indentation on `composer.json`) which effectively prevented the automatic version-checking mechanism to work as it should. As a consequence, automatic upgrades are only triggered for versions 1.0.6 and up. This mostly means that anyone running a version before 1.0.5 will never get a notification to upgrade.
+
+The format of the object saved to the local storage has changed *twice* — first to add a timestamp (to allow some automatic cleanup of stale data on storage), and second, for saving the contents of the subject line as well, not only the content in the textarea (main body of the article post). The current version of the plugin should be able to retrieve objects from the browser's local storage using the old format and save them using the new one, without loss of data.
+
+While doing these changes, I noticed that the HTML attributes for a Quick Reply changed subtly from those used on a regular reply. This meant slightly tweaking the DOM-transversing functionality so that this plugin works with both. Hopefuly there are no further exceptions, but, if you encounter them, feel free to report those cases as well!
+
+## Current testing
+
+Since I have just a limited access to a testing environment, it's worth pointing out that, currenty, my own testing just includes browsers on macOS Big Sur, namely, Brave (Chromium-based), Safari, Firefox, and Microsoft Edge (also Chromium-based). Others, such as Opera, or any mobile/TV-based browser were *not* tested. phpBB3 is running as a native PHP-based application under nginx + php 8.2/8.3 on a Ubuntu Linux 22.0.4 LTS bare metal server hosted in Germany.
+
+Additionally, there are "mock" pages (coming with the GitHub package, but *not* with the phpBB3 plugin itself) that allow me to do some testing under different circumstances (I found some weird bugs that way!), beyond those that are handled by the automated CI tools that I'm currently using.
 
 ## Acknowledgements
 
@@ -38,6 +48,8 @@ Many thanks to
 Kudos to [@gvp9000](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2227069) for finding & fixing an obscure bug that affects Firefox.
 
 Kudos to [@kylesands](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2218926) for pointing out and providing a fix for [incorrect local storage deletion during Preview](https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246115?p=877342#p877342).
+
+Thanks to [@TrekRed](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=19327714) for suggesting that the subject field gets saved as well.
 
 Logo designed by [DALL·E 2](https://openai.com/product/dall-e-2).
 
