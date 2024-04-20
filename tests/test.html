@@ -53,6 +53,9 @@
 		<p>
 			Note that this test suite obviously lacks the ability to test for sessions and their effects on local storage; therefore, it doesn't reproduce the actual phpBB3 environment...
 		</p>
+		<p>
+			The <code>Preview</code> button is actually fake, it's only included there to make sure we're catching the correct button from our JavaScript code.
+		</p>
 	</article>
 	<hr>
 	<form method="post" name="post-local-storage" action="#theTitle">
@@ -72,6 +75,7 @@
 					<fieldset class="submit-buttons">
 						<input type="hidden" name="creation_time" value="1713199088">
 						<input type="hidden" name="form_token" value="0c2672b7-6dc8-474a-a2af-12e90cc6b205">
+						<input type="submit" tabindex="5" name="preview" value="Preview" class="button1" onclick="document.getElementById('postform').action += '#preview';">&nbsp;
 						<input type="submit" accesskey="s" name="submit" value="Submit" class="button1">&nbsp;
 					</fieldset>
 				</div>
