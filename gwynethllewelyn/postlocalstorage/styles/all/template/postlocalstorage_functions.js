@@ -53,9 +53,9 @@
 	var key = message.location.href;
 	// Firefox seems to have an odd bug which affects clicking backspace in quick succession.
 	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
-	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877324#p877324
+	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877489#p877489
 	var count_hash_num = key.split("#").length - 1;
-	for (let i = 0; i < count_hash_num - 1; i++) {
+	for (let i = 0; i < count_hash_num; i++) {
 		key = key.substring(0, key.lastIndexOf('#'));
 	}
 	/**
@@ -175,7 +175,7 @@
 		 */
 		function() {
 			// ... except on Preview. We still want to keep the storage around during preview!
-			// Kudos to @kylesands for this
+			// Kudos to @kylesands for this (gwyneth 20240416)
 			if (document.activeElement.tagName.toLowerCase() == "input" && document.activeElement.value.toLowerCase() == 'submit') { // Added to only clear on Input button with Submit value
 				message.localStorage.removeItem(key);
 				message.removeEventListener(unloadEvent, updateStorage);
