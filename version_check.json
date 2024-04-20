@@ -1,7 +1,7 @@
 {
 	"stable": {
 		"1.0": {
-			"current": "1.1.0",
+			"current": "1.2.0",
 			"download": "https:\/\/github.com\/GwynethLlewelyn\/post-local-storage\/releases\/download\/v1.0.5\/postlocalstorage.zip",
 			"announcement": "https:\/\/www.phpbb.com\/customise\/db\/extension\/postlocalstorage\/",
 			"eol": null,
