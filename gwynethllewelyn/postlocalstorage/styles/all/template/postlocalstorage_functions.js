@@ -33,7 +33,7 @@
 	var textarea = doc.querySelector('textarea[name="message"]');
 	// no point in being around if this is nil; also: avoids crashing below (gwyneth 20220303)
 	if (!textarea) {
-		console.warn("no phpBB3 content body textarea found");
+		console.debug("no phpBB3 content body textarea found");
 		return;
 	}
 	/**
@@ -174,6 +174,18 @@
 		 * @type {EventListener}
 		 */
 		function() {
+			/**
+			 * Retrieve the session expiry time that was stamped on the post submit page.
+			 * @type {number}
+			 */
+			const expiry_time = document.getElementById('expiry-time').innerText;
+			if (Date.now > expiry_time) {
+				// We won't clear anything if the session already expired, so return.
+				return;
+			}
+
+			// Now remove the local storage on `Submit` — it'll get saved to the database as a post/PM,
+			// so we don't need it around any longer.
 			// ... except on Preview. We still want to keep the storage around during preview!
 			// Kudos to @kylesands for this (gwyneth 20240416)
 			if (document.activeElement.tagName.toLowerCase() == "input" && document.activeElement.value.toLowerCase() == 'submit') { // Added to only clear on Input button with Submit value

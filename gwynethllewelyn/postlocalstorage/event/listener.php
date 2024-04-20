@@ -69,11 +69,27 @@ class listener implements EventSubscriberInterface
 	/**
 	 * Check for the expiry time, and export it as a variable we can embed.
 	 *
-	 * @param \phpbb\event\data $event The event object
+	 * @param \phpbb\event\data $event The event object, which we'll ignore.
 	 */
 	public function check_expiry_time($event)
 	{
-		$session_expiry_time = $this->time_now + ((int) $this->config['session_length'] + 60);
+		try
+		{
+			/**
+			 * Session length, as defined on the configuration parameters.
+			 * If it doesn't exist, or throws an error, we'll set it to zero and that's it.
+			 *
+			 * @var int
+			 */
+			$session_length = (int) $this->config['session_length'];
+		}
+		catch (Exception $e)
+		{
+			error_log("[phpBB3 postlocalstorage] Something is wrong with `session_length`: " . $e->getMessage());
+			$session_length = 0;
+		}
+		// The extra 60 seconds is really just a safeguard.
+		$session_expiry_time = $this->time_now + $session_length + 60;
 
 		$this->template->assign_vars(array(
 			'EXPIRY_TIME' => $session_expiry_time,
