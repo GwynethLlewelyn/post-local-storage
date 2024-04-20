@@ -1,9 +1,9 @@
 
 <div id="expiry-time" style="visibility: hidden; display: none;">
-{% IF EXPIRY_TIME %}
+{% if EXPIRY_TIME %}
 {% EXPIRY_TIME %}
-{% ELSE %}
+{% else %}
 0
-{% ENDIF %}
+{% endif %}
 </div>
 {% INCLUDEJS '@gwynethllewelyn_postlocalstorage/postlocalstorage_functions.js' %}
