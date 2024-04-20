@@ -2,6 +2,16 @@
 
 For a _much_ more detailed version of this changelog, see the [commit history](https://github.com/GwynethLlewelyn/post-local-storage/commits/master/) on GitHub.
 
+## 1.2.0
+
+-   @kylesands correctly pointed out that the code introduced in 1.1.0 doesn't work properly: when clicking `Submit` without having a valid session, all local storage will be deleted as well (because `Submit` has that side-effect). So we need to address this case *before* clicking submit, and this can only be accomplished by hooking up to the correct event and properly exporting the session expiry date, because phpBB forcefully hides the session cookie from the JavaScript sandbox.
+-    Not "very simple" extension any more. Just "simple".
+-    Minor bug fixes (kudos again to @gvp9000).
+
+## 1.1.1
+
+-   Bug: when the session times out, but the user is not aware of it, clicking on `Submit` will first remove the data from local storage, and _then_ proceed to the usual phpBB3 page which will say that the user is not logged in, etc. At this stage, it's too late to recover anything from the storage, it has been wiped out! Thanks to @kylesands for reporting the bug.
+
 ## 1.1.0
 
 -   Bug: when user clicks on Preview, local storage gets cleared by mistake. Reported & fixed by @kylesands (see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246115?p=877342#p877342)
