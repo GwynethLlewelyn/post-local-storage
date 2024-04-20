@@ -50,7 +50,7 @@ class listener implements EventSubscriberInterface
 		$this->user     = $user;
 		$this->request  = $request;
 		$this->config   = $config;
-		$this->time_now - time();	// assign current time.
+		$this->time_now = time();	// assign current time.
 	}
 
 
@@ -61,7 +61,7 @@ class listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		error_log('[phpBB3 postlocalstorage] my getSubscribedEvents was called!');
+		// error_log('[phpBB3 postlocalstorage] my getSubscribedEvents was called!');
 		return [
 			'core.modify_submit_post_data' => 'check_expiry_time',
 			'core.posting_modify_template_vars' => 'check_expiry_time',
@@ -75,7 +75,8 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_expiry_time($event)
 	{
-		error_log('[phpBB3 postlocalstorage] Dumping \$event in check_expiry_time()' + print_r($event, true));
+		// error_log('[phpBB3 postlocalstorage] Dumping \$event in check_expiry_time()' + print_r($event, true));
+		error_log('[phpBB3 postlocalstorage] checking for expiry time...');
 
 		try
 		{
@@ -92,8 +93,11 @@ class listener implements EventSubscriberInterface
 			error_log('[phpBB3 postlocalstorage] Something is wrong with session_length: ' . $e->getMessage());
 			$session_length = 0;
 		}
-		// The extra 60 seconds is really just a safeguard.
-		$session_expiry_time = $this->time_now + $session_length + 60;
+		$session_expiry_time = $this->time_now + $session_length;
+
+		error_log('[phpBB3 postlocalstorage] check_expiry_time: $this->time_now is ' . $this->time_now
+			. ' $session_length is ' . $session_length
+			. '; Total is: ' . $session_expiry_time);
 
 		$this->template->assign_vars(array(
 			'EXPIRY_TIME' => $session_expiry_time,

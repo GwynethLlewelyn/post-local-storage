@@ -33,7 +33,7 @@
 	var textarea = doc.querySelector('textarea[name="message"]');
 	// no point in being around if this is nil; also: avoids crashing below (gwyneth 20220303)
 	if (!textarea) {
-		console.debug("no phpBB3 content body textarea found");
+		console.debug("no phpBB3 content body textarea found, skipping");
 		return;
 	}
 	/**
@@ -178,8 +178,10 @@
 			 * Retrieve the session expiry time that was stamped on the post submit page.
 			 * @type {number}
 			 */
-			const expiry_time = document.getElementById('expiry-time').innerText;
-			if (Date.now > expiry_time) {
+			const expiry_time = document.getElementById('expiry-time').innerText.trim();
+			const dateNow = Date.now();
+			console.debug("Date.now() is " + dateNow + " and expiry_time is " + expiry_time);
+			if (dateNow > expiry_time) {
 				// We won't clear anything if the session already expired, so return.
 				return;
 			}
