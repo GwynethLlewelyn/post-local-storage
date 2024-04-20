@@ -61,7 +61,7 @@ class listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		error_log("[phpBB3 postlocalstorage] ");
+		error_log('[phpBB3 postlocalstorage] my getSubscribedEvents was called!');
 		return [
 			'core.modify_submit_post_data' => 'check_expiry_time',
 			'core.posting_modify_template_vars' => 'check_expiry_time',
@@ -75,6 +75,8 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_expiry_time($event)
 	{
+		error_log('[phpBB3 postlocalstorage] Dumping \$event in check_expiry_time()' + print_r($event, true));
+
 		try
 		{
 			/**
@@ -87,7 +89,7 @@ class listener implements EventSubscriberInterface
 		}
 		catch (Exception $e)
 		{
-			error_log("[phpBB3 postlocalstorage] Something is wrong with `session_length`: " . $e->getMessage());
+			error_log('[phpBB3 postlocalstorage] Something is wrong with session_length: ' . $e->getMessage());
 			$session_length = 0;
 		}
 		// The extra 60 seconds is really just a safeguard.
