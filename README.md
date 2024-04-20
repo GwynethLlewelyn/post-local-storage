@@ -4,7 +4,7 @@
 
 ## Locally store the content of a post in the phpBB forum software
 
-A very simple [phpBB3](https://www.phpbb.com/) extension to use the browser's local storage for preventing the content of a post to be lost after a crash or session expiration.
+A simple [phpBB3](https://www.phpbb.com/) extension to use the browser's local storage for preventing the content of a post to be lost after a crash or session expiration.
 
 ## Reasoning
 
