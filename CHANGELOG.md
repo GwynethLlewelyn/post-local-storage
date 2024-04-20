@@ -5,8 +5,9 @@ For a _much_ more detailed version of this changelog, see the [commit history](h
 ## 1.2.0
 
 -   @kylesands correctly pointed out that the code introduced in 1.1.0 doesn't work properly: when clicking `Submit` without having a valid session, all local storage will be deleted as well (because `Submit` has that side-effect). So we need to address this case *before* clicking submit, and this can only be accomplished by hooking up to the correct event and properly exporting the session expiry date, because phpBB forcefully hides the session cookie from the JavaScript sandbox.
--    Not "very simple" extension any more. Just "simple".
--    Minor bug fixes (kudos again to @gvp9000).
+-    Therefore, this is not a "very simple" extension any more. Just "simple".
+-    Other minor bug fixes (kudos again to @gvp9000).
+-    Note for the pre-release version: it still includes far too many debug messages.
 
 ## 1.1.1
 
