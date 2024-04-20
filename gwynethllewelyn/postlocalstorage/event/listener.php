@@ -25,6 +25,11 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\config\config */
 	protected $config;
 
+	/**
+	 * Current time.
+	 * @var int
+	 */
+	private $time_now;
 
 	/**
  	* Constructor.
@@ -45,6 +50,7 @@ class listener implements EventSubscriberInterface
 		$this->user     = $user;
 		$this->request  = $request;
 		$this->config   = $config;
+		$this->time_now - time();	// assign current time.
 	}
 
 
@@ -67,12 +73,8 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_expiry_time($event)
 	{
-		/* $lang_set_ext = $event['lang_set_ext'];
-		$lang_set_ext[] = [
-			'ext_name' => 'acme/demo',
-			'lang_set' => 'demo',
-		];
-		$event['lang_set_ext'] = $lang_set_ext; */
+		$session_expiry_time = $this->time_now + ((int) $this->config['session_length'] + 60);
+
 		$this->template->assign_vars(array(
 			'EXPIRY_TIME' => $session_expiry_time,
 		));
