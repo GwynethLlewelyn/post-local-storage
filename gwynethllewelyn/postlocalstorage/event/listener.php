@@ -40,7 +40,7 @@ class listener implements EventSubscriberInterface
  	* @param \phpbb\user                $user     User object.
  	* @param \phpbb\request\request     $request  Request object.
  	* @param \phpbb\config\config       $config   Config object.
- 	* @return \aurelienazerty\darkmode\event\listener
+ 	* @return \gwynethllewelyn\postlocalstorage\event\listener
  	* @access public
  	* @since 1.2.0
  	*/
@@ -61,8 +61,10 @@ class listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
+		error_log("[phpBB3 postlocalstorage] ");
 		return [
 			'core.modify_submit_post_data' => 'check_expiry_time',
+			'core.posting_modify_template_vars' => 'check_expiry_time',
 		];
 	}
 
