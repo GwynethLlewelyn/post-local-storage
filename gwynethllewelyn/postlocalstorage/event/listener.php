@@ -81,7 +81,7 @@ class listener implements EventSubscriberInterface
 		try
 		{
 			/**
-			 * Session length, as defined on the configuration parameters.
+			 * Session length, as defined on the configuration parameters, in seconds.
 			 * If it doesn't exist, or throws an error, we'll set it to zero and that's it.
 			 *
 			 * @var int

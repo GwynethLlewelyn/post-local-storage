@@ -176,11 +176,13 @@
 		function() {
 			/**
 			 * Retrieve the session expiry time that was stamped on the post submit page.
+			 * Force it to a number!
+			 *
 			 * @type {number}
 			 */
-			const expiry_time = document.getElementById('expiry-time').innerText.trim();
-			const dateNow = Date.now();
-			console.debug("Date.now() is " + dateNow + " and expiry_time is " + expiry_time);
+			const expiry_time = parseInt(document.getElementById('expiry-time').innerText.trim(), 10);
+			const dateNow = Math.floor(Date.now() / 1000);	// we get milliseconds, so we need to convert to seconds.
+			console.debug("Date.now() in seconds is " + dateNow + " and expiry_time is " + expiry_time);
 			if (dateNow > expiry_time) {
 				// We won't clear anything if the session already expired, so return.
 				return;

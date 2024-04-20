@@ -28,7 +28,7 @@ class ext extends base
 	 */
 	public function is_enableable()
 	{
-		error_log('[phpBB3 postlocalstorage] my is_enableable() was called!');
+		// error_log('[phpBB3 postlocalstorage] my is_enableable() was called!');
 		return phpbb_version_compare(PHPBB_VERSION, '3.3', '>=');
 	}
 }
