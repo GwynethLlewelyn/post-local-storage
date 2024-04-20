@@ -39,5 +39,8 @@ package-lock.json
 .eslintrc.yml
 .prettierrc.json
 
+# We're not really using any of the vendors, this is just for the sake of local debugging
+vendor/
+
 # Our stuff
 postlocalstorage.zip
