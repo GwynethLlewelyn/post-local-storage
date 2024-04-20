@@ -1,10 +1,10 @@
 services:
-    gwynethllewelyn.postlocalstorage.listener:
-        class: gwynethllewelyn\postlocalstorage\event\listener
-        arguments:
-            - '@template'
-            - '@user'
-            - '@request'
-            - '@config'
-        tags:
-            - { name: event.listener }
+  gwynethllewelyn.postlocalstorage.listener:
+    class: gwynethllewelyn\postlocalstorage\event\listener
+    arguments:
+      - '@template'
+      - '@user'
+      - '@request'
+      - '@config'
+    tags:
+        - { name: event.listener }
