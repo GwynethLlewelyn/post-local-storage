@@ -49,7 +49,7 @@ Many thanks to
 
 Kudos to [@gvp9000](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2227069) for finding & fixing an obscure bug that affects Firefox.
 
-Kudos to [@kylesands](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2218926) for pointing out and providing a fix for [incorrect local storage deletion during Preview](https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246115?p=877342#p877342).
+Kudos to [@kylesands](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2218926) for pointing out and providing a fix for [incorrect local storage deletion during Preview](https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246115?p=877342#p877342) as well as for continuing overall support.
 
 Thanks to [@TrekRed](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=19327714) for suggesting that the subject field gets saved as well.
 
