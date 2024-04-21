@@ -54,9 +54,17 @@
 	// Firefox seems to have an odd bug which affects clicking backspace in quick succession.
 	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
 	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877489#p877489
-	var count_hash_num = key.split("#").length - 1;
-	for (let i = 0; i < count_hash_num; i++) {
-		key = key.substring(0, key.lastIndexOf('#'));
+	// @kylesands has suggested a diferent method, one that deals better with other situations, e.g. when the
+	// `sid` is passed via URL, which happens every once in a while: (gwyneth 20240421)
+	if (key.includes("/posting.php")) { // Posting
+		if (key.endsWith("#preview")) {
+			key = key.slice(0, -8); // It keeps the key the same when previewing or not to help with recovery
+		}
+		if (key.includes("&sid=")) {
+			key = key.split("&sid=")[0];
+		}
+	} else if (key.includes("/ucp.php")) { // PM'ing
+		key = key.split("?")[0]; // It keeps the key the same when previewing or not to help with recovery
 	}
 	/**
 	 * JSON object to be saved with the textarea content + subject content + timestamp.
