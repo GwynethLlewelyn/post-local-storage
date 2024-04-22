@@ -10,10 +10,10 @@
 /**
  * @function anonymous
  *
- * @param {Object} message - This object (will be set to `this`).
- * @param {Document} doc - This object's DOM (will be set to `this.document`).
+ * @param {Window} message - This object, which corresponds to the message being posted (will be set to `this`).
+ * @param {Document} document - This object's DOM (will be set to `this.document`).
  */
-(function(message, doc) {
+(function(message, document) {
 	/**
 	 * Freshness interval in milliseconds.
 	 * One year = 31536000000 milliseconds.
@@ -30,7 +30,7 @@
 	 * phpBB3 uses a textarea with name 'message', both for Quick Replies _and_ normal replies
 	 * @type {Element?}
 	 */
-	var textarea = doc.querySelector('textarea[name="message"]');
+	const textarea = document.querySelector('textarea[name="message"]');
 	// no point in being around if this is nil; also: avoids crashing below (gwyneth 20220303)
 	if (!textarea) {
 		console.debug("no phpBB3 content body textarea found, skipping");
@@ -40,7 +40,7 @@
 	 * phpBB3 usually gives the subject/topic the name 'subject' — same for QR and normal replies.
 	 * @type {Element?}
 	 */
-	var subject = doc.querySelector('input[name="subject"]');
+	const subject = document.querySelector('input[name="subject"]');
 	if (!subject) {
 		console.debug("no phpBB3 subject line found");
 		// I have not decided what to do in this case! Possibly just:
@@ -66,11 +66,6 @@
 	} else if (key.includes("/ucp.php")) { // PM'ing
 		key = key.split("?")[0]; // It keeps the key the same when previewing or not to help with recovery
 	}
-	/**
-	 * JSON object to be saved with the textarea content + subject content + timestamp.
-	 * @type {JSON?}
-	 */
-	var item = null;
 
 	/**
 	 * Event name to be used for saving content on demand, when user switches pages.
@@ -89,8 +84,12 @@
 	 * @property {number} timestamp - Time in milliseconds since the Unix epoch, to deal with stale content.
 	 */
 
+	/**
+	 * JSON object to be saved with the textarea content + subject content + timestamp.
+	 * @type {JSON?}
+	 */
+	var item = message.localStorage.getItem(key);
 	// If there's a `localStorage` entry for the current URL, update the textarea with the saved value.
-	item = message.localStorage.getItem(key);
 	if (item) {
 		/**
 		 * JSON representation of one object in the localStorage.
