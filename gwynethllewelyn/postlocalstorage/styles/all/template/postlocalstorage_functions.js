@@ -51,17 +51,22 @@
 	 * @type {string}
 	 */
 	var key = message.location.href;
-	// Firefox seems to have an odd bug which affects clicking backspace in quick succession.
+	// Firefox and Chrome seem to have an odd bug which affects clicking backspace in quick succession.
 	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
 	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877489#p877489
-	
+	//if key.includes (viewforum.php) then exit
+	if (key.includes("viewforum.php")) {
+	console.debug("viewforum, no message box");
+	return;
+	}
+
 	// POSTING
 	//possible key formats
-	//./phpBB3/posting.php?mode=edit&&p=xxxxx#preview#preview#preview#preview .......
+	//./phpBB3/posting.php?mode=edit&p=xxxxx#preview#preview#preview#preview .......
 	//./phpBB3/posting.php?mode=quote&p=xxxxx#preview#preview#preview#preview .......
 	//./phpBB3/posting.php?mode=reply&t=yyyyy#preview#preview#preview#preview .......
 	//Remove all "#preview" strings at the end
-	if (key.includes("posting.php?mode=")) {
+	else if (key.includes("posting.php?mode=")) {
 		if (key.endsWith("#preview")) {
 			var count_hash = key.split("#").length - 1;
 			for (let i = 0; i < count_hash; i++) {
@@ -69,31 +74,39 @@
 			}
 		}
 	}
+
 	// PM'ing
 	//possible key formats
-	
+
 	//1 case 
 	//./phpBB3/ucp.php?i=pm&mode=compose
-	//nothing to do here
-	
+	//do nothing
+
 	//2 case 
 	//./phpBB3/ucp.php?i=ucp_pm&mode=compose returns
 	//./phpBB3/ucp.php?i=pm&mode=compose
-	if (key.includes("ucp.php?i=ucp_pm&mode=compose")) {
+	else if (key.includes("ucp.php?i=ucp_pm&mode=compose")) {
 	key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
-	//3 case 
+	//3 case
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=post&sid=sssssssssssssssssssssssssss returns
 	//./phpBB3/ucp.php?i=pm&mode=compose
-	if (key.includes("ucp.php?i=pm&mode=compose&action=post")) {
+	else if (key.includes("ucp.php?i=pm&mode=compose&action=post")) {
 	key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
-	//4 case ./phpBB3/ucp.php?i=pm&mode=compose&action=reply&f=xxx&p=yyy
-	//5 case ./phpBB3/ucp.php?i=pm&mode=compose&action=forward&f=xxx&p=yyy
-	//6 case ./phpBB3/ucp.php?i=pm&mode=compose&action=quote&f=xxx&p=yyy
-	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&f=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&f=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&f=")) {
+	//4 case
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&f=xxx&p=yyy returns
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&p=yyy
+	//5 case
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&f=xxx&p=yyy returns
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&p=yyy
+	//6 case
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&f=xxx&p=yyy returns
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
+
+	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&f=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&f=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&f=")) {
 	var fpos = key.indexOf("&f="),
 		ppos = key.indexOf("&p=");
 	if (fpos > -1 && ppos > fpos) {
@@ -110,14 +123,17 @@
 	//9th case 
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns 
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
-	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
+	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
 	var sipos = key.indexOf("&sid="),
 		pipos = key.indexOf("&p=");
 	if (sipos > -1 && pipos > sipos) {
 		key = key.substr(0, sipos)+key.substr(pipos);
 	}
 	}
-
+	else {
+	console.debug("no appropriate message key or pm key found");
+	}
+	
 	/**
 	 * Event name to be used for saving content on demand, when user switches pages.
 	 *
@@ -177,7 +193,7 @@
 	}
 
 	/**
-	 * This function will store the current value of the textarea in localStorage (or delete it if the textarea is blank) with a timestamp.
+	 * This function will store the current value of the textarea in localStorage with a timestamp or delete it if the textarea is blank.
 	 *
 	 * It gets triggered by the "type" events on the input and textarea elements,
 	 * @function updateStorage
@@ -239,7 +255,7 @@
 			 * @type {number}
 			 */
 			const expiry_time = parseInt(document.getElementById('expiry-time').innerText.trim(), 10);
-			const dateNow = Math.floor(Date.now() / 1000);	// we get milliseconds, so we need to convert to seconds.
+			const dateNow = Math.floor(Date.now() / 1000); // we get milliseconds, so we need to convert to seconds.
 			console.debug("Date.now() in seconds is " + dateNow + " and expiry_time is " + expiry_time);
 			
 			//the if statement for deleting local storage in PM'ing, because expiry_time = 0, it must be fixed
@@ -249,12 +265,11 @@
 				return;
 				}
 			}
-
 			// Now remove the local storage on `Submit` — it'll get saved to the database as a post/PM,
 			// so we don't need it around any longer.
 			// ... except on Preview. We still want to keep the storage around during preview!
 			// Kudos to @kylesands for this (gwyneth 20240416)
-			if (document.activeElement.tagName.toLowerCase() == "input" && document.activeElement.value.toLowerCase() == 'submit') { // Added to only clear on Input button with Submit value
+			if (document.activeElement.tagName.toLowerCase() == "input" && document.activeElement.value.toLowerCase() == ("submit") || document.activeElement.value.toLowerCase() == ("υποβολή")) { // Added to only clear on Input button with Submit value
 				message.localStorage.removeItem(key);
 				message.removeEventListener(unloadEvent, updateStorage);
 				console.debug("Text submitted (not in preview!); removed from localStorage");
