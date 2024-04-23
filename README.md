@@ -52,6 +52,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylesands"><img src="https://avatars.githubusercontent.com/u/9731115?v=4?s=100" width="100px;" alt="kylesands"/><br /><sub><b>kylesands</b></sub></a><br /><a href="#code-kylesands" title="Code">💻</a> <a href="#ideas-kylesands" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gvp9000"><img src="https://avatars.githubusercontent.com/u/24462297?v=4?s=100" width="100px;" alt="gvp9000"/><br /><sub><b>gvp9000</b></sub></a><br /><a href="#code-gvp9000" title="Code">💻</a> <a href="#ideas-gvp9000" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
