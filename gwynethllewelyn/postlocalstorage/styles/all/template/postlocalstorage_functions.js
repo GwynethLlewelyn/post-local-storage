@@ -52,19 +52,71 @@
 	 */
 	var key = message.location.href;
 	// Firefox seems to have an odd bug which affects clicking backspace in quick succession.
-	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
+	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
 	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877489#p877489
-	// @kylesands has suggested a diferent method, one that deals better with other situations, e.g. when the
-	// `sid` is passed via URL, which happens every once in a while: (gwyneth 20240421)
-	if (key.includes("/posting.php")) { // Posting
+
+	// POSTING
+//possible key formats
+//./phpBB3/posting.php?mode=edit&&p=xxxxx#preview#preview#preview#preview .......
+//./phpBB3/posting.php?mode=quote&p=xxxxx#preview#preview#preview#preview .......
+//./phpBB3/posting.php?mode=reply&t=yyyyy#preview#preview#preview#preview .......
+//Remove all "#preview" strings at the end
+	if (key.includes("posting.php?mode=")) {
 		if (key.endsWith("#preview")) {
-			key = key.slice(0, -8); // It keeps the key the same when previewing or not to help with recovery
+			var count_hash = key.split("#").length - 1;
+			for (let i = 0; i < count_hash; i++) {
+			key = key.substring(0, key.lastIndexOf('#'));
+			}
 		}
-		if (key.includes("&sid=")) {
-			key = key.split("&sid=")[0];
-		}
-	} else if (key.includes("/ucp.php")) { // PM'ing
-		key = key.split("?")[0]; // It keeps the key the same when previewing or not to help with recovery
+	}
+
+// PM'ing
+//possible key formats
+
+//1 case 
+//./phpBB3/ucp.php?i=pm&mode=compose
+//nothing to do here
+
+//2 case 
+//./phpBB3/ucp.php?i=ucp_pm&mode=compose returns
+//./phpBB3/ucp.php?i=pm&mode=compose
+	if (key.includes("ucp.php?i=ucp_pm&mode=compose")) {
+	key = key.split("?")[0].concat("?i=pm&mode=compose");
+	}
+
+//3 case 
+//./phpBB3/ucp.php?i=pm&mode=compose&action=post&sid=sssssssssssssssssssssssssss returns
+//./phpBB3/ucp.php?i=pm&mode=compose
+	if (key.includes("ucp.php?i=pm&mode=compose&action=post")) {
+	key = key.split("?")[0].concat("?i=pm&mode=compose");
+	}
+
+//4 case ./phpBB3/ucp.php?i=pm&mode=compose&action=reply&f=xxx&p=yyy
+//5 case ./phpBB3/ucp.php?i=pm&mode=compose&action=forward&f=xxx&p=yyy
+//6 case ./phpBB3/ucp.php?i=pm&mode=compose&action=quote&f=xxx&p=yyy
+	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&f=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&f=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&f=")) {
+	var fpos = key.indexOf("&f="),
+		ppos = key.indexOf("&p=");
+	if (fpos > -1 && ppos > fpos) {
+		key = key.substr(0, fpos)+key.substr(ppos);
+	}
+	}
+	
+//7 case 
+//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&sid=sssssssssssssssssssssssssss&p=yyy returns 
+//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&p=yyy
+//8th case 
+//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&sid=sssssssssssssssssssssssssss&p=yyy returns 
+//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&p=yyy
+//9th case 
+//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns 
+//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
+	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
+	var sipos = key.indexOf("&sid="),
+		pipos = key.indexOf("&p=");
+	if (sipos > -1 && pipos > sipos) {
+		key = key.substr(0, sipos)+key.substr(pipos);
+	}
 	}
 
 	/**
