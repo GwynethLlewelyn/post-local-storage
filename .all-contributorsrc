@@ -1,4 +1,22 @@
 {
   "projectName": "post-local-storage",
-  "projectOwner": "GwynethLlewelyn"
+  "projectOwner": "GwynethLlewelyn",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "kylesands",
+      "name": "kylesands",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9731115?v=4",
+      "profile": "https://github.com/kylesands",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    }
+  ]
 }
