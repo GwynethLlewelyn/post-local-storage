@@ -95,10 +95,10 @@
 //5 case ./phpBB3/ucp.php?i=pm&mode=compose&action=forward&f=xxx&p=yyy
 //6 case ./phpBB3/ucp.php?i=pm&mode=compose&action=quote&f=xxx&p=yyy
 	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&f=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&f=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&f=")) {
-	var cpos = key.indexOf("&f="),
-		spos = key.indexOf("&p=");
-	if (cpos > -1 && spos > cpos) {
-		key = key.substr(0, cpos)+key.substr(spos);
+	var fpos = key.indexOf("&f="),
+		ppos = key.indexOf("&p=");
+	if (fpos > -1 && ppos > fpos) {
+		key = key.substr(0, fpos)+key.substr(ppos);
 	}
 	}
 	
@@ -112,10 +112,10 @@
 //./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns 
 //./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
 	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
-	var cpos = key.indexOf("&sid="),
-		spos = key.indexOf("&p=");
-	if (cpos > -1 && spos > cpos) {
-		key = key.substr(0, cpos)+key.substr(spos);
+	var sipos = key.indexOf("&sid="),
+		pipos = key.indexOf("&p=");
+	if (sipos > -1 && pipos > sipos) {
+		key = key.substr(0, sipos)+key.substr(pipos);
 	}
 	}
 
