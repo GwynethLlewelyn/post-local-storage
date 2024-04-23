@@ -75,7 +75,8 @@
 					<fieldset class="submit-buttons">
 						<input type="hidden" name="creation_time" value="1713199088">
 						<input type="hidden" name="form_token" value="0c2672b7-6dc8-474a-a2af-12e90cc6b205">
-						<input type="submit" tabindex="5" name="preview" value="Preview" class="button1" onclick="document.getElementById('postform').action += '#preview';">&nbsp;
+						<input type="submit" tabindex="5" name="preview" value="Preview" class="button1" onclick="document.forms['post-local-storage'].action.replace('#theTitle', '#preview')
+;">&nbsp;
 						<input type="submit" accesskey="s" name="submit" value="Submit" class="button1">&nbsp;
 					</fieldset>
 				</div>
@@ -84,7 +85,20 @@
 	</form>
 	<div id="expiry-time" style="visibility: hidden; display: none;"></div>
 	<script>
-		document.getElementById('expiry-time').innerText = Date.now();
+		// Fake test generator — 'as if' this came from phpBB:
+		const creationTime = document.querySelector('input[name="creation_time"]');
+		if (creationTime) {
+			creationTime.value = Math.floor(Date.now() / 1000) - (6*30*24*60*60); // 15552000 = roughly 6 months
+		} else {
+			console.log("could not get creationTime, keeping the default");
+		}
+		const formToken = document.querySelector('input[name="form_token"]')
+		if (formToken) {
+			formToken.value = self.crypto.randomUUID() ?? formToken.value;
+		} else {
+			console.log("could not get formToken, keeping the default");
+		}
+		document.getElementById('expiry-time').innerText = Math.floor(Date.now() / 1000);
 	</script>
 	<script src="../gwynethllewelyn/postlocalstorage/styles/all/template/postlocalstorage_functions.js"></script>
 </body>
