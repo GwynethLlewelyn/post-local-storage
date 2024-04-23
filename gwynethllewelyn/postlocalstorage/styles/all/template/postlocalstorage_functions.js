@@ -54,14 +54,13 @@
 	// Firefox seems to have an odd bug which affects clicking backspace in quick succession.
 	// Kudos to @gvp9000 and for the fix below. (gwyneth 20240414)
 	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877489#p877489
-
-
-// POSTING
-//possible key formats
-//./phpBB3/posting.php?mode=edit&&p=xxxxx#preview#preview#preview#preview .......
-//./phpBB3/posting.php?mode=quote&p=xxxxx#preview#preview#preview#preview .......
-//./phpBB3/posting.php?mode=reply&t=yyyyy#preview#preview#preview#preview .......
-//Remove all "#preview" strings at the end
+	
+	// POSTING
+	//possible key formats
+	//./phpBB3/posting.php?mode=edit&&p=xxxxx#preview#preview#preview#preview .......
+	//./phpBB3/posting.php?mode=quote&p=xxxxx#preview#preview#preview#preview .......
+	//./phpBB3/posting.php?mode=reply&t=yyyyy#preview#preview#preview#preview .......
+	//Remove all "#preview" strings at the end
 	if (key.includes("posting.php?mode=")) {
 		if (key.endsWith("#preview")) {
 			var count_hash = key.split("#").length - 1;
@@ -70,31 +69,30 @@
 			}
 		}
 	}
-
-// PM'ing
-//possible key formats
-
-//1 case 
-//./phpBB3/ucp.php?i=pm&mode=compose
-//nothing to do here
-
-//2 case 
-//./phpBB3/ucp.php?i=ucp_pm&mode=compose returns
-//./phpBB3/ucp.php?i=pm&mode=compose
+	// PM'ing
+	//possible key formats
+	
+	//1 case 
+	//./phpBB3/ucp.php?i=pm&mode=compose
+	//nothing to do here
+	
+	//2 case 
+	//./phpBB3/ucp.php?i=ucp_pm&mode=compose returns
+	//./phpBB3/ucp.php?i=pm&mode=compose
 	if (key.includes("ucp.php?i=ucp_pm&mode=compose")) {
 	key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
-//3 case 
-//./phpBB3/ucp.php?i=pm&mode=compose&action=post&sid=sssssssssssssssssssssssssss returns
-//./phpBB3/ucp.php?i=pm&mode=compose
+	//3 case 
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=post&sid=sssssssssssssssssssssssssss returns
+	//./phpBB3/ucp.php?i=pm&mode=compose
 	if (key.includes("ucp.php?i=pm&mode=compose&action=post")) {
 	key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
-//4 case ./phpBB3/ucp.php?i=pm&mode=compose&action=reply&f=xxx&p=yyy
-//5 case ./phpBB3/ucp.php?i=pm&mode=compose&action=forward&f=xxx&p=yyy
-//6 case ./phpBB3/ucp.php?i=pm&mode=compose&action=quote&f=xxx&p=yyy
+	//4 case ./phpBB3/ucp.php?i=pm&mode=compose&action=reply&f=xxx&p=yyy
+	//5 case ./phpBB3/ucp.php?i=pm&mode=compose&action=forward&f=xxx&p=yyy
+	//6 case ./phpBB3/ucp.php?i=pm&mode=compose&action=quote&f=xxx&p=yyy
 	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&f=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&f=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&f=")) {
 	var fpos = key.indexOf("&f="),
 		ppos = key.indexOf("&p=");
@@ -103,15 +101,15 @@
 	}
 	}
 	
-//7 case 
-//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&sid=sssssssssssssssssssssssssss&p=yyy returns 
-//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&p=yyy
-//8th case 
-//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&sid=sssssssssssssssssssssssssss&p=yyy returns 
-//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&p=yyy
-//9th case 
-//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns 
-//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
+	//7 case 
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&sid=sssssssssssssssssssssssssss&p=yyy returns 
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&p=yyy
+	//8th case 
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&sid=sssssssssssssssssssssssssss&p=yyy returns 
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&p=yyy
+	//9th case 
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns 
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
 	if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
 	var sipos = key.indexOf("&sid="),
 		pipos = key.indexOf("&p=");
@@ -243,9 +241,13 @@
 			const expiry_time = parseInt(document.getElementById('expiry-time').innerText.trim(), 10);
 			const dateNow = Math.floor(Date.now() / 1000);	// we get milliseconds, so we need to convert to seconds.
 			console.debug("Date.now() in seconds is " + dateNow + " and expiry_time is " + expiry_time);
-			if (dateNow > expiry_time) {
+			
+			//the if statement for deleting local storage in PM'ing, because expiry_time = 0, it must be fixed
+			if (!key.includes("ucp.php")) {
+				if (dateNow > expiry_time) {
 				// We won't clear anything if the session already expired, so return.
 				return;
+				}
 			}
 
 			// Now remove the local storage on `Submit` — it'll get saved to the database as a post/PM,
