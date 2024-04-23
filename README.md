@@ -49,6 +49,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylesands"><img src="https://avatars.githubusercontent.com/u/9731115?v=4?s=100" width="100px;" alt="kylesands"/><br /><sub><b>kylesands</b></sub></a><br /><a href="#code-kylesands" title="Code">💻</a> <a href="#ideas-kylesands" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
