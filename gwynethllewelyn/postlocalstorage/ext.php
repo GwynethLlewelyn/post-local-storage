@@ -19,8 +19,6 @@ use phpbb\extension\base;
  */
 class ext extends base
 {
-
-
 	/**
 	 * Check whether or not the extension can be enabled.
 	 *
