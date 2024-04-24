@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="phpBB extension coding standard" xsi:noNamespaceSchemaLocation="phpcs.xsd" namespace="Phpbb">
+	<description>phpBB extension coding standard</description>
+
+	<!--
+		1.i. Editor Settings
+		http://area51.phpbb.com/docs/32x/coding-guidelines.html#editorsettings
+	-->
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+	<rule ref="Generic.Files.LineEndings"/>
+
+	<!--
+		1.ii. File Layout
+		http://area51.phpbb.com/docs/32x/coding-guidelines.html#fileheader
+	-->
+	<rule ref="PSR2.Files.ClosingTag"/>
+	<rule ref="Generic.Files.EndFileNewline"/>
+
+	<!--
+		2.i. Variable/Function/Class Naming
+		http://area51.phpbb.com/docs/32x/coding-guidelines.html#namingvars
+	-->
+	<!-- variable names are checked using Phpbb.NamingConventions.LowercaseUnderscoredVariables -->
+	<!-- function names are checked using Phpbb.NamingConventions.LowercaseUnderscoredFunctions -->
+	<!-- class names are checked using Phpbb.NamingConventions.LowercaseUnderscoredClasses -->
+	<rule ref="Generic.Files.OneClassPerFile"/>
+	<rule ref="Generic.Files.OneInterfacePerFile"/>
+	<rule ref="Generic.Files.LowercasedFilename"/>
+	<!-- TODO: create a sniff verifying that namespace matches directory structure -->
+
+	<!--
+		2.ii. Code Layout
+		http://area51.phpbb.com/docs/32x/coding-guidelines.html#codelayout
+	-->
+	<rule ref="Generic.ControlStructures.InlineControlStructure"/>
+	<rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
+	<!-- opening brace for controls is checked using Phpbb.ControlStructure.OpeningBraceBsdAllman -->
+	<!-- a space before opening parenthesis checked using Phpbb.ControlStructure.OpeningParenthesis -->
+	<!-- TODO: create a sniff that checks for spaces between tokens -->
+	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing"/>
+	<rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired"/>
+	<!-- TODO: create a sniff validating that break; is on the same level as case -->
+	<rule ref="Squiz.Scope.MemberVarScope"/>
+	<rule ref="Squiz.Scope.MethodScope"/>
+
+	<!--
+		2.vi. Restrictions on the Use of PHP
+		http://area51.phpbb.com/docs/32x/coding-guidelines.html#phprestrictions
+	-->
+	<rule ref="Generic.PHP.DiscourageGoto"/>
+
+	<!--
+		Other useful rules copied from phpbb repo
+	-->
+	<!-- The PHP constants true, false, and null MUST be in lower case. -->
+	<rule ref="Generic.PHP.LowerCaseConstant"/>
+	<!-- PHP keywords MUST be in lower case. -->
+	<rule ref="Generic.PHP.LowerCaseKeyword"/>
+	<!-- Constructors MUST be called __construct() instead of after the class. -->
+	<rule ref="Generic.NamingConventions.ConstructorName"/>
+	<!-- Classes etc. MUST be namespaced -->
+	<rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+	<!-- Files containing classes MUST not have any side-effects -->
+	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols"/>
+	<!-- When present, all use declarations MUST go after the namespace declaration.
+		There MUST be one use keyword per declaration.
+		There MUST be one blank line after the use block. -->
+	<rule ref="PSR2.Namespaces.UseDeclaration"/>
+	<!-- There MUST be one blank line after the namespace declaration -->
+	<rule ref="PSR2.Namespaces.NamespaceDeclaration"/>
+	<!-- "for (; bar; )" should be "while (bar)" instead -->
+	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+	<!-- A method MUST not only call its parent -->
+	<rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
+	<!-- There MUST not be more than one statement per line. -->
+	<rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+	<!-- Call-time pass-by-reference MUST not be used. -->
+	<rule ref="Generic.Functions.CallTimePassByReference.NotAllowed"/>
+	<!-- There MUST be exactly one space after a cast. -->
+	<rule ref="Generic.Formatting.SpaceAfterCast"/>
+	<!-- Class constants MUST be declared in all upper case with underscore separators. -->
+	<rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+	<!-- Only <?php, no short tags. -->
+	<rule ref="Generic.PHP.DisallowShortOpenTag.EchoFound"/>
+	<!-- Method arguments with default values MUST go at the end of the argument list. -->
+	<rule ref="PEAR.Functions.ValidDefaultValue"/>
+	<!-- When referencing arrays there MUST NOT be any whitespace around the opening bracket
+		or before the closing bracket. -->
+	<rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+	<!-- The "else if" statement MUST be written with a space between the words else and if. -->
+	<rule ref="Squiz.ControlStructures.ElseIfDeclaration"/>
+	<!-- There MUST be a space between each element of a foreach loop. -->
+	<rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
+	<!-- In a for loop declaration, there MUST be no space inside the brackets
+		and there MUST be 0 spaces before and 1 space after semicolons. -->
+	<rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
+	<!-- In the argument list, there MUST NOT be a space before each comma,
+		and there MUST be one space after each comma. -->
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+		<properties>
+			<property name="equalsSpacing" value="1"/>
+		</properties>
+	</rule>
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterHint"/>
+	<!-- All built-in PHP functions MUST be called lowercased. -->
+	<rule ref="Squiz.Functions.LowercaseFunctionKeywords"/>
+	<!-- The eval() function MUST NOT be used. -->
+	<rule ref="Squiz.PHP.Eval"/>
+	<!-- There MUST NOT be trailing whitespace at the end of lines. -->
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+	<!-- There MUST NOT be whitespace before the first content of a file -->
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.StartFile"/>
+	<!-- There MUST NOT be whitespace after the last content of a file -->
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EndFile"/>
+	<!-- Functions MUST NOT contain multiple empty lines in a row -->
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines"/>
+	<!-- All code files MUST use only UTF-8 without BOM. -->
+	<rule ref="Generic.Files.ByteOrderMark"/>
+</ruleset>
