@@ -42,12 +42,35 @@ Since I have just a limited access to a testing environment, it's worth pointing
 
 Additionally, there are "mock" pages (coming with the GitHub package, but _not_ with the phpBB3 plugin itself) that allow me to do some testing under different circumstances (I found some weird bugs that way!), beyond those that are handled by the automated CI tools that I'm currently using.
 
-## Acknowledgements
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylesands"><img src="https://avatars.githubusercontent.com/u/9731115?v=4?s=100" width="100px;" alt="kylesands"/><br /><sub><b>kylesands</b></sub></a><br /><a href="#code-kylesands" title="Code">💻</a> <a href="#ideas-kylesands" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gvp9000"><img src="https://avatars.githubusercontent.com/u/24462297?v=4?s=100" width="100px;" alt="gvp9000"/><br /><sub><b>gvp9000</b></sub></a><br /><a href="#code-gvp9000" title="Code">💻</a> <a href="#ideas-gvp9000" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## More acknowledgements
 
 Many thanks to
 [@Tread](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1973496) and [@cabot](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1337922) for gently 'persuading' me to publish this code as a phpBB3.3 extension, by pointing me to all the appropriate bits and pieces of code to be 'assembled' into an extension. Yay!
 
-Kudos to [@gvp9000](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2227069) for finding & fixing an obscure bug that affects Firefox.
+Kudos to [@gvp9000](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2227069) for finding & fixing an obscure bug that affects Firefox and submitting lots of code to fix this.
 
 Kudos to [@kylesands](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=2218926) for pointing out and providing a fix for [incorrect local storage deletion during Preview](https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246115?p=877342#p877342) as well as for continuing overall support.
 
@@ -55,4 +78,5 @@ Thanks to [@TrekRed](https://www.phpbb.com/community/memberlist.php?mode=viewpro
 
 Logo designed by [DALL·E 2](https://openai.com/product/dall-e-2).
 
-![phpBB3 Logo](https://img.shields.io/badge/phpBB-3.3-blue) [![CodeQL](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/83a20d04433341baa65c78d29fc3410a)](https://www.codacy.com/gh/GwynethLlewelyn/post-local-storage/dashboard?utm_source=github.com&utm_medium=referral&utm_content=GwynethLlewelyn/post-local-storage&utm_campaign=Badge_Grade) [![Codacy Security Scan](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml) [![Liberapay](https://img.shields.io/liberapay/receives/GwynethLlewelyn.svg?logo=liberapay")](https://liberapay.com/GwynethLlewelyn/donate)
+![phpBB3 Logo](https://img.shields.io/badge/phpBB-3.3-blue) [![CodeQL](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/83a20d04433341baa65c78d29fc3410a)](https://www.codacy.com/gh/GwynethLlewelyn/post-local-storage/dashboard?utm_source=github.com&utm_medium=referral&utm_content=GwynethLlewelyn/post-local-storage&utm_campaign=Badge_Grade) [![Codacy Security Scan](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml) [![Liberapay](https://img.shields.io/liberapay/receives/GwynethLlewelyn.svg?logo=liberapay")](https://liberapay.com/GwynethLlewelyn/donate) [![All Contributors](https://img.shields.io/github/all-contributors/GwynethLlewelyn/post-local-storage?color=ee8449&style=flat-square)](#contributors)
+

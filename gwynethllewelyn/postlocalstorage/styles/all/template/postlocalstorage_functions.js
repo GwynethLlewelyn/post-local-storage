@@ -56,8 +56,8 @@
 	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877489#p877489
 	//if key.includes (viewforum.php) then exit
 	if (key.includes("viewforum.php")) {
-	console.debug("viewforum, no message box");
-	return;
+	  console.debug("viewforum, no message box");
+	  return;
 	}
 
 	// POSTING
@@ -70,7 +70,7 @@
 		if (key.endsWith("#preview")) {
 			var count_hash = key.split("#").length - 1;
 			for (let i = 0; i < count_hash; i++) {
-			key = key.substring(0, key.lastIndexOf('#'));
+				key = key.substring(0, key.lastIndexOf('#'));
 			}
 		}
 	}
@@ -86,14 +86,14 @@
 	//./phpBB3/ucp.php?i=ucp_pm&mode=compose returns
 	//./phpBB3/ucp.php?i=pm&mode=compose
 	else if (key.includes("ucp.php?i=ucp_pm&mode=compose")) {
-	key = key.split("?")[0].concat("?i=pm&mode=compose");
+	  key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
 	//3 case
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=post&sid=sssssssssssssssssssssssssss returns
 	//./phpBB3/ucp.php?i=pm&mode=compose
 	else if (key.includes("ucp.php?i=pm&mode=compose&action=post")) {
-	key = key.split("?")[0].concat("?i=pm&mode=compose");
+	  key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
 	//4 case
@@ -107,11 +107,11 @@
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
 
 	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&f=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&f=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&f=")) {
-	var fpos = key.indexOf("&f="),
-		ppos = key.indexOf("&p=");
-	if (fpos > -1 && ppos > fpos) {
-		key = key.substr(0, fpos)+key.substr(ppos);
-	}
+	  var fpos = key.indexOf("&f="),
+		  ppos = key.indexOf("&p=");
+	  if (fpos > -1 && ppos > fpos) {
+	 	  key = key.substr(0, fpos) + key.substr(ppos);
+	  }
 	}
 	
 	//7 case 
@@ -123,15 +123,17 @@
 	//9th case 
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns 
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
-	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
-	var sipos = key.indexOf("&sid="),
-		pipos = key.indexOf("&p=");
-	if (sipos > -1 && pipos > sipos) {
-		key = key.substr(0, sipos)+key.substr(pipos);
-	}
+	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") 
+           || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=")
+           || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
+	  var sipos = key.indexOf("&sid="),
+		  pipos = key.indexOf("&p=");
+	  if (sipos > -1 && pipos > sipos) {
+		  key = key.substr(0, sipos) + key.substr(pipos);
+	  }
 	}
 	else {
-	console.debug("no appropriate message key or pm key found");
+	  console.debug("no appropriate message key or pm key found");
 	}
 	
 	/**

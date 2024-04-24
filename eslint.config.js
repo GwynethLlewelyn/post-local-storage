@@ -1,4 +1,5 @@
 // eslint 9.1.0 config file
+// @ts-nocheck
 module.exports = [
 	{
 		languageOptions: {
@@ -6,6 +7,6 @@ module.exports = [
 			sourceType: "script"
 		},
 		files: ["**/*.js"],
-		ignores: ["**/.*", ".*/*"]
+		ignores: ["**/.*", ".*/*"],
 	}
 ];

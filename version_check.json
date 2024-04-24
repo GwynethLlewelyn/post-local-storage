@@ -1,17 +1,8 @@
 {
-	"unstable": {
-		"1.2": {
-			"current": "1.2.0",
-			"download": "https:\/\/github.com\/GwynethLlewelyn\/post-local-storage\/releases\/download\/v1.2.0\/postlocalstorage.zip",
-			"announcement": "https:\/\/www.phpbb.com\/customise\/db\/extension\/postlocalstorage\/",
-			"eol": null,
-			"security": false
-		}
-	},
 	"stable": {
-		"1.1": {
-			"current": "1.1.0",
-			"download": "https:\/\/github.com\/GwynethLlewelyn\/post-local-storage\/releases\/download\/v1.1.0\/postlocalstorage.zip",
+		"1.2": {
+			"current": "1.2.1",
+			"download": "https:\/\/github.com\/GwynethLlewelyn\/post-local-storage\/releases\/download\/v1.2.1\/postlocalstorage.zip",
 			"announcement": "https:\/\/www.phpbb.com\/customise\/db\/extension\/postlocalstorage\/",
 			"eol": null,
 			"security": false
