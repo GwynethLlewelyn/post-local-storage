@@ -32,19 +32,19 @@ class listener implements EventSubscriberInterface
 	private $time_now;
 
 	/**
- 	* Constructor.
- 	*
- 	* Essentially just saves the phpBB globals into local, protected variables.
- 	*
- 	* @param \phpbb\template\template	$template Template object.
- 	* @param \phpbb\user                $user     User object.
- 	* @param \phpbb\request\request     $request  Request object.
- 	* @param \phpbb\config\config       $config   Config object.
- 	* @return \gwynethllewelyn\postlocalstorage\event\listener
- 	* @access public
- 	* @since 1.2.0
- 	*/
-	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request,\phpbb\config\config $config)
+	* Constructor.
+	*
+	* Essentially just saves the phpBB globals into local, protected variables.
+	*
+	* @param \phpbb\template\template $template Template object.
+	* @param \phpbb\user              $user     User object.
+	* @param \phpbb\request\request   $request  Request object.
+	* @param \phpbb\config\config     $config   Config object.
+	* @return \gwynethllewelyn\postlocalstorage\event\listener
+	* @access public
+	* @since 1.2.0
+	*/
+	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\request\request $request, \phpbb\config\config $config)
 	{
 		$this->template = $template;
 		$this->user     = $user;
@@ -52,7 +52,6 @@ class listener implements EventSubscriberInterface
 		$this->config   = $config;
 		$this->time_now = time();	// assign current time.
 	}
-
 
 	/**
 	 * Assign functions defined in this class to event listeners in the core.
@@ -63,7 +62,7 @@ class listener implements EventSubscriberInterface
 	{
 		// error_log('[phpBB3 postlocalstorage] my getSubscribedEvents was called!');
 		return [
-			'core.modify_submit_post_data' => 'check_expiry_time',
+			'core.modify_submit_post_data'      => 'check_expiry_time',
 			'core.posting_modify_template_vars' => 'check_expiry_time',
 		];
 	}
@@ -75,8 +74,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_expiry_time($event)
 	{
-		// error_log('[phpBB3 postlocalstorage] Dumping \$event in check_expiry_time()' + print_r($event, true));
-		error_log('[phpBB3 postlocalstorage] checking for expiry time...');
+		error_log('[phpBB3 postlocalstorage] checking for expiry time...' . $event->getMessage());
 
 		try
 		{
@@ -95,9 +93,14 @@ class listener implements EventSubscriberInterface
 		}
 		$session_expiry_time = $this->time_now + $session_length;
 
-		error_log('[phpBB3 postlocalstorage] check_expiry_time: $this->time_now is ' . $this->time_now
-			. ' $session_length is ' . $session_length
-			. '; Total is: ' . $session_expiry_time);
+		error_log(
+			'[phpBB3 postlocalstorage] check_expiry_time: $this->time_now is '
+			. $this->time_now
+			. ' $session_length is '
+			. $session_length
+			. '; Total is: '
+			. $session_expiry_time
+		);
 
 		$this->template->assign_vars(array(
 			'EXPIRY_TIME' => $session_expiry_time,
