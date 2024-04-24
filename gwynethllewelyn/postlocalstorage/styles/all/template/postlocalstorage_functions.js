@@ -56,8 +56,8 @@
 	// @see https://www.phpbb.com/customise/db/extension/postlocalstorage/support/topic/246616?p=877489#p877489
 	//if key.includes (viewforum.php) then exit
 	if (key.includes("viewforum.php")) {
-	  console.debug("viewforum, no message box");
-	  return;
+		console.debug("viewforum, no message box");
+		return;
 	}
 
 	// POSTING
@@ -78,64 +78,64 @@
 	// PM'ing
 	//possible key formats
 
-	//1 case 
+	//1st case
 	//./phpBB3/ucp.php?i=pm&mode=compose
 	//do nothing
 
-	//2 case 
+	//2nd case
 	//./phpBB3/ucp.php?i=ucp_pm&mode=compose returns
 	//./phpBB3/ucp.php?i=pm&mode=compose
 	else if (key.includes("ucp.php?i=ucp_pm&mode=compose")) {
-	  key = key.split("?")[0].concat("?i=pm&mode=compose");
+		key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
-	//3 case
+	//3rd case
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=post&sid=sssssssssssssssssssssssssss returns
 	//./phpBB3/ucp.php?i=pm&mode=compose
 	else if (key.includes("ucp.php?i=pm&mode=compose&action=post")) {
-	  key = key.split("?")[0].concat("?i=pm&mode=compose");
+		key = key.split("?")[0].concat("?i=pm&mode=compose");
 	}
 
-	//4 case
+	//4th case
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&f=xxx&p=yyy returns
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&p=yyy
-	//5 case
+	//5th case
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&f=xxx&p=yyy returns
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&p=yyy
-	//6 case
+	//6th case
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&f=xxx&p=yyy returns
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
 
 	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&f=") || key.includes("ucp.php?i=pm&mode=compose&action=forward&f=") || key.includes("ucp.php?i=pm&mode=compose&action=quote&f=")) {
-	  var fpos = key.indexOf("&f="),
-		  ppos = key.indexOf("&p=");
-	  if (fpos > -1 && ppos > fpos) {
-	 	  key = key.substr(0, fpos) + key.substr(ppos);
-	  }
+		var fpos = key.indexOf("&f="),
+			ppos = key.indexOf("&p=");
+		if (fpos > -1 && ppos > fpos) {
+			key = key.substring(0, fpos) + key.substring(ppos);
+		}
 	}
-	
-	//7 case 
-	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&sid=sssssssssssssssssssssssssss&p=yyy returns 
+
+	//7th case
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&sid=sssssssssssssssssssssssssss&p=yyy returns
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=reply&p=yyy
-	//8th case 
-	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&sid=sssssssssssssssssssssssssss&p=yyy returns 
+	//8th case
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&sid=sssssssssssssssssssssssssss&p=yyy returns
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=forward&p=yyy
-	//9th case 
-	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns 
+	//9th case
+	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&sid=sssssssssssssssssssssssssss&p=yyy returns
 	//./phpBB3/ucp.php?i=pm&mode=compose&action=quote&p=yyy
-	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=") 
-           || key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=")
-           || key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
-	  var sipos = key.indexOf("&sid="),
-		  pipos = key.indexOf("&p=");
-	  if (sipos > -1 && pipos > sipos) {
-		  key = key.substr(0, sipos) + key.substr(pipos);
-	  }
+	else if (key.includes("ucp.php?i=pm&mode=compose&action=reply&sid=")
+		|| key.includes("ucp.php?i=pm&mode=compose&action=forward&sid=")
+		|| key.includes("ucp.php?i=pm&mode=compose&action=quote&sid=")) {
+		var sipos = key.indexOf("&sid="),
+			pipos = key.indexOf("&p=");
+		if (sipos > -1 && pipos > sipos) {
+			key = key.substring(0, sipos) + key.substring(pipos);
+		}
 	}
 	else {
-	  console.debug("no appropriate message key or pm key found");
+		console.debug("no appropriate message key or pm key found");
 	}
-	
+
 	/**
 	 * Event name to be used for saving content on demand, when user switches pages.
 	 *
@@ -256,13 +256,13 @@
 			 *
 			 * @type {number}
 			 */
-			const expiry_time = parseInt(document.getElementById('expiry-time').innerText.trim(), 10);
+			const expiryTime = parseInt(document.getElementById('expiry-time').innerText.trim(), 10);
 			const dateNow = Math.floor(Date.now() / 1000); // we get milliseconds, so we need to convert to seconds.
-			console.debug("Date.now() in seconds is " + dateNow + " and expiry_time is " + expiry_time);
-			
-			//the if statement for deleting local storage in PM'ing, because expiry_time = 0, it must be fixed
+			console.debug("Date.now() in seconds is " + dateNow + " and expiryTime is " + expiryTime);
+
+			//the if statement for deleting local storage in PM'ing, because expiryTime = 0, it must be fixed
 			if (!key.includes("ucp.php")) {
-				if (dateNow > expiry_time) {
+				if (dateNow > expiryTime) {
 				// We won't clear anything if the session already expired, so return.
 				return;
 				}
