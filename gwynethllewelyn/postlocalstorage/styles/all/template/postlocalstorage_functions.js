@@ -242,7 +242,8 @@
 		}, { once: true }
 	);
 
-	// When the form is submitted, delete the localStorage key/value pair.
+	// When the form is submitted via clicking on the 'Submit' built-in button,
+	// delete the localStorage key/value pair.
 	textarea.form.addEventListener(
 		"submit",
 		/**
@@ -254,24 +255,34 @@
 			 * Retrieve the session expiry time that was stamped on the post submit page.
 			 * Force it to a number!
 			 *
+			 * Note: 1) if the div element does not exist, expiryTime becomes `NaN`
+			 *       2) if it exists but has not been properly initialised, expiryTime becomes `0`
+			 * In both cases, we will skip the test for expiryTime
 			 * @type {number}
 			 */
-			const expiryTime = parseInt(document.getElementById('expiry-time').innerText.trim(), 10);
+			const expiryTime = parseInt(document.getElementById('expiry-time')?.innerText.trim(), 10);
 			const dateNow = Math.floor(Date.now() / 1000); // we get milliseconds, so we need to convert to seconds.
 			console.debug("Date.now() in seconds is " + dateNow + " and expiryTime is " + expiryTime);
 
 			//the if statement for deleting local storage in PM'ing, because expiryTime = 0, it must be fixed
-			if (!key.includes("ucp.php")) {
-				if (dateNow > expiryTime) {
+			//if (!key.includes("ucp.php")) {
+			//
+			// Now we do 2 things:
+			//  - the error came from an event not being fired for PMs;
+			//  - just to be absolutely sure, do first an extra check for expiryTime being non-zero
+			// (gwyneth 20240425)
+			if ((expiryTime) && (dateNow > expiryTime)) {
 				// We won't clear anything if the session already expired, so return.
 				return;
-				}
 			}
+			//}
 			// Now remove the local storage on `Submit` — it'll get saved to the database as a post/PM,
 			// so we don't need it around any longer.
-			// ... except on Preview. We still want to keep the storage around during preview!
+			// ... except on Preview (or draft, or whatever). We still want to keep the storage around during preview!
 			// Kudos to @kylesands for this (gwyneth 20240416)
-			if (document.activeElement.tagName.toLowerCase() == "input" && document.activeElement.value.toLowerCase() == ("submit") || document.activeElement.value.toLowerCase() == ("υποβολή")) { // Added to only clear on Input button with Submit value
+			// Fixed lack of translation issue by using the 'name' value instead, but if either does
+			// not exist, localStorage will remain untouched.
+			if (document.activeElement.tagName?.toLowerCase() == "input" && document.activeElement.name?.toLowerCase() == "post") { // Added to only clear on Input button with Submit value
 				message.localStorage.removeItem(key);
 				message.removeEventListener(unloadEvent, updateStorage);
 				console.debug("Text submitted (not in preview!); removed from localStorage");
