@@ -64,6 +64,7 @@ class listener implements EventSubscriberInterface
 		return [
 			'core.modify_submit_post_data'      => 'check_expiry_time',
 			'core.posting_modify_template_vars' => 'check_expiry_time',
+			'core.ucp_pm_compose_template'		=> 'check_expiry_time',
 		];
 	}
 
