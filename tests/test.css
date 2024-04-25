@@ -1,4 +1,9 @@
-/* Some basics so that this doesn't look so default-y */
+/**
+ * Some basics so that this doesn't look so default-y
+ *
+ * Note that the formatting may look weird, but we're trying to do things as
+ * recommended by Stylelint (gwyneth 20230425)
+ */
 body {
   background-color: ivory;
   font-family: "Work Sans", ui-sans-serif, sans-serif;
@@ -9,112 +14,19 @@ body {
   word-wrap: break-word;
 }
 
-h1 {
-  color: navy;
-  font-size: 1.2rem;
-}
-
-p {
-  color: darkslategray;
-  padding-bottom: 0.5em;
-}
-
-/* CSS below comes from phpBB3 directly */
-.panel {
-  border-radius: 7px;
-  margin-bottom: 4px;
-  padding: 5px 10px;
-}
-
-.panel h3 {
-  margin: 0.5em 0;
-}
-
-fieldset {
-  border: 0;
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
   margin: 0;
-  padding: 0;
-}
-
-fieldset dl {
-  padding: 4px 0;
-}
-
-fieldset.fields1 dt {
-  border-right-width: 0;
-  width: 15em;
-}
-
-fieldset.fields1 div {
-  margin-bottom: 3px;
-}
-
-fieldset dt {
-  display: block;
-  float: left;
-  text-align: left;
-  width: 40%;
-}
-
-fieldset.fields1 dd {
-  border-left-width: 0;
-  margin-left: 15em;
-}
-
-fieldset dd {
-  margin-bottom: 3px;
-  margin-left: 41%;
-  vertical-align: top;
-}
-
-/* Submit button fieldset */
-fieldset.submit-buttons {
-  margin: 5px 0;
-  text-align: center;
-  vertical-align: middle;
-}
-
-fieldset.submit-buttons input {
-  vertical-align: middle;
-}
-
-dt label {
-  font-weight: bold;
-  text-align: left;
-}
-
-/* label {
-  color: #425067;
-} */
-
-label {
-  cursor: default;
-  padding-right: 5px;
-}
-
-input.inputbox {
-  width: 85%;
-}
-
-.autowidth {
-  width: auto !important;
-}
-
-.inputbox {
-  border: 1px solid transparent;
-  padding: 2px;
-}
-
-dd input,
-dd textarea {
-  margin-right: 3px;
-}
-
-input {
-  font-size: 1em;
-  font-weight: normal;
-  padding: 0 3px;
-  vertical-align: middle;
 }
 
 button,
@@ -129,8 +41,118 @@ textarea {
   line-height: inherit;
 }
 
+h1 {
+  color: navy;
+  font-size: 1.2rem;
+}
+
 input {
   line-height: normal;
+  font-size: 1em;
+  font-weight: normal;
+  padding: 0 3px;
+  vertical-align: middle;
+}
+
+p {
+  color: darkslategray;
+  padding-bottom: 0.5em;
+}
+
+textarea {
+  font-size: 1em;
+  line-height: 1.4em;
+  overflow: auto;
+  padding: 2px;
+  width: 60%;
+}
+
+.panel {
+  border-radius: 7px;
+  margin-bottom: 4px;
+  padding: 5px 10px;
+}
+
+h3.panel {
+  margin: 0.5em 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+fieldset dl {
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+fieldset dt {
+  display: block;
+  float: left;
+  text-align: left;
+  width: 40%;
+}
+
+fieldset dd {
+  margin-bottom: 3px;
+  margin-left: 41%;
+  vertical-align: top;
+}
+
+fieldset.fields1 dd {
+  border-left-width: 0;
+  margin-left: 15em;
+}
+
+fieldset.fields1 div {
+  margin-bottom: 3px;
+}
+
+fieldset.fields1 dt {
+  border-right-width: 0;
+  width: 15em;
+}
+
+.inputbox {
+  border: 1px solid transparent;
+  padding: 2px;
+}
+
+/* Submit button fieldset */
+fieldset.submit-buttons {
+  margin: 5px 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+dd input,
+dd textarea {
+  margin-right: 3px;
+}
+
+fieldset.submit-buttons input {
+  vertical-align: middle;
+}
+
+label {
+/*  color: #425067; */
+  cursor: default;
+  padding-right: 5px;
+}
+
+dt label {
+  font-weight: bold;
+  text-align: left;
+}
+
+input.inputbox {
+  width: 85%;
+}
+
+.autowidth {
+  width: auto !important;
 }
 
 .message-box {
@@ -156,50 +178,21 @@ textarea.inputbox {
   width: 450px;
 }
 
-.inputbox {
-  border: 1px solid transparent;
-  padding: 2px;
-}
-
-textarea {
-  font-size: 1em;
-  line-height: 1.4em;
-  overflow: auto;
-  padding: 2px;
-  width: 60%;
-}
-
 .clearfix,
-dl.polls,
-fieldset dl,
-ul.topiclist dl {
+.polls,
+.topiclist dl {
   overflow: hidden;
 }
 
-.action-bar:after,
-.inner:after,
-.minitabs > ul:after,
-.notification_text:after,
-.postprofile .avatar-container:after,
-.tabs > ul:after,
-.tabs-container:after,
-ul.linklist:after {
+.action-bar::after,
+.inner::after,
+.linklist,
+.minitabs > ul::after,
+.notification-text::after,
+.postprofile .avatar-container::after,
+.tabs > ul::after,
+.tabs-container::after {
   clear: both;
   content: "";
   display: block;
-}
-
-blockquote,
-dd,
-dl,
-figure,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-pre {
-  margin: 0;
 }
