@@ -164,7 +164,7 @@
 		 * JSON representation of one object in the localStorage.
 		 * @type {StoredContent?}
 		 */
-		var data = JSON.parse(item);
+		let data = JSON.parse(item);
 		/** @since 1.1.0 */
 		// Before 1.1.0, 'our' objects did not carry timestamps, so we need to check for them: (gwyneth 20240415)
 		if (data?.timestamp) {
