@@ -74,7 +74,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_expiry_time($event)
 	{
-		error_log('[phpBB3 postlocalstorage] checking for expiry time...' . $event->getMessage());
+		error_log('[phpBB3 postlocalstorage] checking for expiry time...' . empty($event) ? '(empty event data)' : '(we got something on the event data)');
 
 		try
 		{
