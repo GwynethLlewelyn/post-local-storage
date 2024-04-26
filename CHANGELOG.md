@@ -2,6 +2,12 @@
 
 For a _much_ more detailed version of this changelog, see the [commit history](https://github.com/GwynethLlewelyn/post-local-storage/commits/master/) on GitHub.
 
+## 1.2.1
+
+-   Hooking up with more triggers to deal with issue #7	(PMs got `expiry-time` set to zero)
+-   Using the submit's button name to check for correct button to clear localStorage, since checking for its _value_ requires dealing with potential translations
+-   Added more (default) configurations for the various code debugging and CI tools that are automatically launched these days
+
 ## 1.2.0
 
 -   @kylesands correctly pointed out that the code introduced in 1.1.0 doesn't work properly: when clicking `Submit` without having a valid session, all local storage will be deleted as well (because `Submit` has that side-effect). So we need to address this case *before* clicking submit, and this can only be accomplished by hooking up to the correct event and properly exporting the session expiry date, because phpBB forcefully hides the session cookie from the JavaScript sandbox.
