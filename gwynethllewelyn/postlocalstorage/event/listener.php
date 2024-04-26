@@ -75,7 +75,12 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_expiry_time($event)
 	{
-		error_log('[phpBB3 postlocalstorage] checking for expiry time...' . empty($event) ? '(empty event data)' : '(we got something on the event data)');
+		// The following code is unneeded, it's just here to avoid errors/warnings
+		// from the many code-checking tools. (gwyneth 20230426)
+		if (!empty($event))
+		{
+			error_log('[phpBB3 postlocalstorage] checking for expiry time... (we got something on the event data)');
+		}
 
 		try
 		{
@@ -89,19 +94,19 @@ class listener implements EventSubscriberInterface
 		}
 		catch (Exception $e)
 		{
-			error_log('[phpBB3 postlocalstorage] Something is wrong with session_length: ' . $e->getMessage());
+			error_log('[phpBB3 postlocalstorage] Something is wrong with `\$session_length`: ' . $e->getMessage());
 			$session_length = 0;
 		}
 		$session_expiry_time = $this->time_now + $session_length;
 
-		error_log(
+/* 		error_log(
 			'[phpBB3 postlocalstorage] check_expiry_time: $this->time_now is '
 			. $this->time_now
 			. ' $session_length is '
 			. $session_length
 			. '; Total is: '
 			. $session_expiry_time
-		);
+		); */
 
 		$this->template->assign_vars(array(
 			'EXPIRY_TIME' => $session_expiry_time,
