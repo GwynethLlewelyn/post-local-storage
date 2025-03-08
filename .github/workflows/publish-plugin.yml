@@ -1,0 +1,31 @@
+# According to GitHub Copilot, this ought to allow the ZIP file to be auto-published
+# (gwyneth 20250308)
+name: Publish Plugin
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-zip:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions@github.com"
+
+    - name: Create ZIP file
+      run: |
+        git archive -9 -o postlocalstorage.zip HEAD gwynethllewelyn/**
+
+    - name: Upload ZIP file as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: postlocalstorage
+        path: postlocalstorage.zip
