@@ -3,7 +3,7 @@
  * Handles the content storage of a post/reply/direct message inside localStorage.
  *
  * @author Gwyneth Llewelyn
- * @copyright © 2023,2024 by Gwyneth Llewelyn. Some rights reserved.
+ * @copyright © 2023,2024,2025 by Gwyneth Llewelyn. Some rights reserved.
  * @license GPL-2.0-only
  */
 
@@ -64,9 +64,12 @@
 	// possible key formats
 	// ./phpBB3/posting.php?mode=edit&p=xxxxx#preview#preview#preview#preview .......
 	// ./phpBB3/posting.php?mode=quote&p=xxxxx#preview#preview#preview#preview .......
-	//. /phpBB3/posting.php?mode=reply&t=yyyyy#preview#preview#preview#preview .......
+	// ./phpBB3/posting.php?mode=reply&t=yyyyy#preview#preview#preview#preview .......
+	// ./phpBB3/viewtopic.php?t=yyyyy <- This is QuickReply! (gwyneth 20250116)
 	// Remove all "#preview" strings at the end
-	else if (key.includes("posting.php?mode=")) {
+	else if (
+		key.includes("posting.php?mode=")			// full editor
+		|| key.includes("viewtopic.php?t=")) {		// QuickReply editor
 		if (key.endsWith("#preview")) {
 			var count_hash = key.split("#").length - 1;
 			for (let i = 0; i < count_hash; i++) {
