@@ -1,0 +1,63 @@
+env:
+  browser: true
+  es6: true
+parser: "@babel/eslint-parser"
+extends:
+  - "eslint:recommended"
+parserOptions:
+  ecmaVersion: 2020
+  sourceType: "module"
+  ecmaFeatures:
+    classes: true
+    jsx: true
+rules:
+  brace-style:
+    - warn
+    - 1tbs
+  camelcase: off
+  comma-dangle:
+    - warn
+    - always-multiline
+  comma-style:
+    - error
+    - last
+  complexity:
+    - warn
+    - 10
+  curly: warn
+  eol-last:
+    - error
+    - always
+  id-length: warn
+  max-lines: warn
+  max-params:
+    - warn
+    - 4
+  no-duplicate-imports: error
+  no-eq-null: error
+  eqeqeq:
+    - warn
+    - smart
+  no-eval: error
+  no-implied-eval: error
+  no-invalid-this: error
+  no-shadow: error
+  no-undefined: error
+  no-empty-function: warn
+  no-extend-native: error
+  no-param-reassign: warn
+  no-unused-expressions: warn
+  no-useless-concat: warn
+  no-label-var: warn
+  no-use-before-define: error
+  no-const-assign: error
+  no-useless-constructor: warn
+  no-useless-rename: warn
+  no-warning-comments:
+    - warn
+    - location: anywhere
+      terms:
+        - todo
+        - fixme
+  prefer-promise-reject-errors: error
+  semi: error
