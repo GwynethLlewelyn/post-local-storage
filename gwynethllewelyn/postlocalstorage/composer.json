@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "A simple phpBB3 extension to locally store the content of a post being written, to avoid losing everything after a crash or session expiration.",
 	"homepage": "https://github.com/GwynethLlewelyn/post-local-storage",
-	"version": "1.2.1",
-	"time": "2024-04-26",
+	"version": "1.2.2",
+	"time": "2025-01-16 20:15:00",
 	"license": "GPL-2.0-only",
 	"keywords": [
 		"phpbb",

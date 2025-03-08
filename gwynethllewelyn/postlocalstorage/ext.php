@@ -2,7 +2,7 @@
 /**
  * Post Local Storage extension for the phpBB3 Forum Software package.
  *
- * @copyright (c) 2024 by Gwyneth Llewelyn. Some rights reserved.
+ * @copyright (c) 2024,2025 by Gwyneth Llewelyn. Some rights reserved.
  * @license GNU General Public License, version 2 (GPL-2.0)
  * @since 1.2.0
  */

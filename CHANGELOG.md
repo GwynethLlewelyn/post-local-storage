@@ -2,6 +2,10 @@
 
 For a _much_ more detailed version of this changelog, see the [commit history](https://github.com/GwynethLlewelyn/post-local-storage/commits/master/) on GitHub.
 
+## 1.2.2
+
+-	First attempt to get QuickReply working
+
 ## 1.2.1
 
 -   Hooking up with more triggers to deal with issue #7	(PMs got `expiry-time` set to zero)
