@@ -25,6 +25,10 @@ jobs:
       run: |
         git archive -9 -o postlocalstorage.zip HEAD gwynethllewelyn/**
 
+    - name: List files in the workspace
+      run: |
+        ls -al
+
     - name: Upload ZIP file as artifact
       uses: actions/upload-artifact@v3
       with:
