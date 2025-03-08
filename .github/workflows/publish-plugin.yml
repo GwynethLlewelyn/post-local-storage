@@ -30,7 +30,9 @@ jobs:
         ls -al
 
     - name: Upload ZIP file as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: postlocalstorage
         path: postlocalstorage.zip
+        overwrite: true
+        compression-level: 0  # no need to compress an existing ZIP file
