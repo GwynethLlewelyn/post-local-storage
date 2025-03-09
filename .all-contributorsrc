@@ -40,6 +40,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/6350179?v=4",
       "profile": "https://cabotweb.fr/",
       "contributions": ["ideas"]
+    },
+    {
+      "login": "gvp9000",
+      "name": "gvp9000",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24462297?v=4",
+      "profile": "https://github.com/gvp9000",
+      "contributions": ["code", "bug"]
     }
   ],
   "contributorsPerLine": 7,
