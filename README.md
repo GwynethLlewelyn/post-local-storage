@@ -1,6 +1,6 @@
 ![Logo](graphics/post-local-storage-logo-smaller.png)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # post-local-storage
@@ -55,6 +55,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://gwynethllewelyn.net/"><img src="https://avatars.githubusercontent.com/u/304404?v=4?s=100" width="100px;" alt="Gwyneth Llewelyn"/><br /><sub><b>Gwyneth Llewelyn</b></sub></a><br /><a href="https://github.com/GwynethLlewelyn/post-local-storage/commits?author=GwynethLlewelyn" title="Code">💻</a> <a href="https://github.com/GwynethLlewelyn/post-local-storage/commits?author=GwynethLlewelyn" title="Documentation">📖</a> <a href="#design-GwynethLlewelyn" title="Design">🎨</a> <a href="#fundingFinding-GwynethLlewelyn" title="Funding Finding">🔍</a> <a href="#ideas-GwynethLlewelyn" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-GwynethLlewelyn" title="Maintenance">🚧</a> <a href="#projectManagement-GwynethLlewelyn" title="Project Management">📆</a> <a href="#question-GwynethLlewelyn" title="Answering Questions">💬</a> <a href="#research-GwynethLlewelyn" title="Research">🔬</a> <a href="https://github.com/GwynethLlewelyn/post-local-storage/pulls?q=is%3Apr+reviewed-by%3AGwynethLlewelyn" title="Reviewed Pull Requests">👀</a> <a href="#content-GwynethLlewelyn" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tread"><img src="https://avatars.githubusercontent.com/u/146954?v=4?s=100" width="100px;" alt="Tim Read"/><br /><sub><b>Tim Read</b></sub></a><br /><a href="#ideas-tread" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
   <tfoot>

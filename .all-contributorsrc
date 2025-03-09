@@ -26,6 +26,13 @@
         "review",
         "content"
       ]
+    },
+    {
+      "login": "tread",
+      "name": "Tim Read",
+      "avatar_url": "https://avatars.githubusercontent.com/u/146954?v=4",
+      "profile": "https://github.com/tread",
+      "contributions": ["ideas"]
     }
   ],
   "contributorsPerLine": 7,
