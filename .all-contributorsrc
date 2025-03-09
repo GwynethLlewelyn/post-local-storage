@@ -1,28 +1,34 @@
 {
   "projectName": "post-local-storage",
   "projectOwner": "GwynethLlewelyn",
-  "files": [
-    "README.md"
-  ],
-  "commitType": "docs",
-  "commitConvention": "angular",
-  "contributorsPerLine": 7,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "gitmoji",
   "contributors": [
     {
-      "login": "kylesands",
-      "name": "kylesands",
-      "avatar_url": "https://avatars.githubusercontent.com/u/9731115?v=4",
-      "profile": "https://github.com/kylesands"
-    },
-    {
-      "login": "gvp9000",
-      "name": "gvp9000",
-      "avatar_url": "https://avatars.githubusercontent.com/u/24462297?v=4",
-      "profile": "https://github.com/gvp9000"
+      "login": "GwynethLlewelyn",
+      "name": "Gwyneth Llewelyn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/304404?v=4",
+      "profile": "https://gwynethllewelyn.net/",
+      "contributions": [
+        "code",
+        "doc",
+        "design",
+        "fundingFinding",
+        "ideas",
+        "maintenance",
+        "projectManagement",
+        "question",
+        "research",
+        "review",
+        "content"
+      ]
     }
   ],
-  "contributions": [
-    "code",
-    "ideas"
-  ]
+  "contributorsPerLine": 7,
+  "linkToUsage": true
 }
+

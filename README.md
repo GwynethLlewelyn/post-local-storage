@@ -1,4 +1,7 @@
 ![Logo](graphics/post-local-storage-logo-smaller.png)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # post-local-storage
 
@@ -45,23 +48,33 @@ Additionally, there are "mock" pages (coming with the GitHub package, but _not_ 
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylesands"><img src="https://avatars.githubusercontent.com/u/9731115?v=4?s=100" width="100px;" alt="kylesands"/><br /><sub><b>kylesands</b></sub></a><br /><a href="#code-kylesands" title="Code">💻</a> <a href="#ideas-kylesands" title="Ideas, Planning, & Feedback">🤔</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gvp9000"><img src="https://avatars.githubusercontent.com/u/24462297?v=4?s=100" width="100px;" alt="gvp9000"/><br /><sub><b>gvp9000</b></sub></a><br /><a href="#code-gvp9000" title="Code">💻</a> <a href="#ideas-gvp9000" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://gwynethllewelyn.net/"><img src="https://avatars.githubusercontent.com/u/304404?v=4?s=100" width="100px;" alt="Gwyneth Llewelyn"/><br /><sub><b>Gwyneth Llewelyn</b></sub></a><br /><a href="https://github.com/GwynethLlewelyn/post-local-storage/commits?author=GwynethLlewelyn" title="Code">💻</a> <a href="https://github.com/GwynethLlewelyn/post-local-storage/commits?author=GwynethLlewelyn" title="Documentation">📖</a> <a href="#design-GwynethLlewelyn" title="Design">🎨</a> <a href="#fundingFinding-GwynethLlewelyn" title="Funding Finding">🔍</a> <a href="#ideas-GwynethLlewelyn" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-GwynethLlewelyn" title="Maintenance">🚧</a> <a href="#projectManagement-GwynethLlewelyn" title="Project Management">📆</a> <a href="#question-GwynethLlewelyn" title="Answering Questions">💬</a> <a href="#research-GwynethLlewelyn" title="Research">🔬</a> <a href="https://github.com/GwynethLlewelyn/post-local-storage/pulls?q=is%3Apr+reviewed-by%3AGwynethLlewelyn" title="Reviewed Pull Requests">👀</a> <a href="#content-GwynethLlewelyn" title="Content">🖋</a></td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="7">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
 </table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
