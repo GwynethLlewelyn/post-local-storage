@@ -54,6 +54,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/9731115?v=4",
       "profile": "https://github.com/kylesands",
       "contributions": ["code", "bug", "promotion"]
+    },
+    {
+      "login": "TrekRed",
+      "name": "TrekRed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/101043135?v=4",
+      "profile": "https://github.com/TrekRed",
+      "contributions": ["ideas"]
     }
   ],
   "contributorsPerLine": 7,
