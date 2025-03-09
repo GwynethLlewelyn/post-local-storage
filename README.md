@@ -1,6 +1,6 @@
 ![Logo](graphics/post-local-storage-logo-smaller.png)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # post-local-storage
@@ -58,6 +58,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tread"><img src="https://avatars.githubusercontent.com/u/146954?v=4?s=100" width="100px;" alt="Tim Read"/><br /><sub><b>Tim Read</b></sub></a><br /><a href="#ideas-tread" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://cabotweb.fr/"><img src="https://avatars.githubusercontent.com/u/6350179?v=4?s=100" width="100px;" alt="cabot"/><br /><sub><b>cabot</b></sub></a><br /><a href="#ideas-cabot" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gvp9000"><img src="https://avatars.githubusercontent.com/u/24462297?v=4?s=100" width="100px;" alt="gvp9000"/><br /><sub><b>gvp9000</b></sub></a><br /><a href="https://github.com/GwynethLlewelyn/post-local-storage/commits?author=gvp9000" title="Code">💻</a> <a href="https://github.com/GwynethLlewelyn/post-local-storage/issues?q=author%3Agvp9000" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kylesands"><img src="https://avatars.githubusercontent.com/u/9731115?v=4?s=100" width="100px;" alt="kylesands"/><br /><sub><b>kylesands</b></sub></a><br /><a href="https://github.com/GwynethLlewelyn/post-local-storage/commits?author=kylesands" title="Code">💻</a> <a href="https://github.com/GwynethLlewelyn/post-local-storage/issues?q=author%3Akylesands" title="Bug reports">🐛</a> <a href="#promotion-kylesands" title="Promotion">📣</a></td>
     </tr>
   </tbody>
   <tfoot>
