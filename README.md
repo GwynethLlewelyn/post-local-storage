@@ -1,8 +1,4 @@
 ![Logo](graphics/post-local-storage-logo-smaller.png)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
 # post-local-storage
 
 ## Locally store the content of a post in the phpBB forum software
@@ -79,9 +75,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 ## More acknowledgements
@@ -97,5 +90,7 @@ Thanks to [@TrekRed](https://www.phpbb.com/community/memberlist.php?mode=viewpro
 
 Logo designed by [DALL·E 2](https://openai.com/product/dall-e-2).
 
-![phpBB3 Logo](https://img.shields.io/badge/phpBB-3.3-blue) [![CodeQL](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/83a20d04433341baa65c78d29fc3410a)](https://www.codacy.com/gh/GwynethLlewelyn/post-local-storage/dashboard?utm_source=github.com&utm_medium=referral&utm_content=GwynethLlewelyn/post-local-storage&utm_campaign=Badge_Grade) [![Codacy Security Scan](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml) [![Liberapay](https://img.shields.io/liberapay/receives/GwynethLlewelyn.svg?logo=liberapay")](https://liberapay.com/GwynethLlewelyn/donate) [![All Contributors](https://img.shields.io/github/all-contributors/GwynethLlewelyn/post-local-storage?color=ee8449&style=flat-square)](#contributors)
-
+![phpBB3 Logo](https://img.shields.io/badge/phpBB-3.3-blue) [![CodeQL](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codeql.yml) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/83a20d04433341baa65c78d29fc3410a)](https://www.codacy.com/gh/GwynethLlewelyn/post-local-storage/dashboard?utm_source=github.com&utm_medium=referral&utm_content=GwynethLlewelyn/post-local-storage&utm_campaign=Badge_Grade) [![Codacy Security Scan](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml/badge.svg)](https://github.com/GwynethLlewelyn/post-local-storage/actions/workflows/codacy.yml) [![Liberapay](https://img.shields.io/liberapay/receives/GwynethLlewelyn.svg?logo=liberapay")](https://liberapay.com/GwynethLlewelyn/donate)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
