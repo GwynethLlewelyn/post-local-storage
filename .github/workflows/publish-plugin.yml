@@ -7,6 +7,10 @@ on:
     tags:
       - '*'
 
+permissions:
+  contents: write
+  releases: write
+
 jobs:
   create-zip:
     runs-on: ubuntu-latest
