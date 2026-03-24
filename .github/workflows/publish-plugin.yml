@@ -1,12 +1,11 @@
-# According to GitHub Copilot, this ought to allow the ZIP file to be auto-published
+# Automatically publish a ZIP file as a release when a tag is pushed
 # (gwyneth 20250308)
 name: Publish Plugin
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
 
 jobs:
   create-zip:
@@ -14,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Set up Git
       run: |
@@ -37,4 +36,9 @@ jobs:
         overwrite: true
         compression-level: 0  # no need to compress an existing ZIP file
 
-  deploy: normalJob
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: postlocalstorage.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
