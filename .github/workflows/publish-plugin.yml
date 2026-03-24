@@ -29,7 +29,7 @@ jobs:
         ls -al
 
     - name: Upload ZIP file as artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: postlocalstorage
         path: postlocalstorage.zip
@@ -37,7 +37,7 @@ jobs:
         compression-level: 0  # no need to compress an existing ZIP file
 
     - name: Create Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         files: postlocalstorage.zip
       env:
