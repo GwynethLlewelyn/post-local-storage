@@ -36,3 +36,5 @@ jobs:
         path: postlocalstorage.zip
         overwrite: true
         compression-level: 0  # no need to compress an existing ZIP file
+
+  deploy: normalJob
